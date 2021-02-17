@@ -3,6 +3,7 @@
 <head>
 	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style-profile.css">
 </head>
 <body>
 	<main>
@@ -17,8 +18,53 @@
 			</div>
 		</header>
 
-		<section>
-			
+		<section >
+			<div class="heading">
+				<h1>My Profile</h1>
+			</div>
+			<div class="userData-container">
+				<form>
+					<div class="data-table">
+						<div class="data-row">
+							<div class="data-cell">
+								<label>First name :</label>
+								<input id="f-name" type="text" name="f-name" >
+							</div>	
+							<div class="data-cell cell2">
+								<label> Last name :</label>
+								<input id="l-name" type="text" name="l-name" >
+							</div>	
+						</div>
+						<div class="data-row">
+							<div class="data-cell">
+								<label>Username :</label>
+								<input id="username" type="text" name="username">
+							</div>
+							<div class="data-cell cell2">
+									<label>Address :</label>
+									<textarea id="address" type="text" name="address" ></textarea> 
+								</div>
+							
+						</div>
+						<div>
+							<div class="data-row">
+								<div class="data-cell" >
+									<label > Gender :</label>
+									<input id="gender" type="text" name="gender">
+								</div>
+							</div>
+							
+						</div>
+						<div class="btn">
+							<input id="update-info-btn" type="button" value="Save" >
+							<input id="cancle-btn" type="button" value="Cancle" >
+
+						</div>
+					</div>
+					
+				</form>
+			</div>
+				
 		</section>
 	</main>
 

@@ -1,0 +1,54 @@
+.userData-container{
+	/*width: 1000px;*/
+	border: 2px solid black;
+	margin: 0 auto;
+	padding: 50px;
+	font-size: 25px;
+	box-sizing: border-box;
+
+
+}
+
+.heading h1{
+	font-size: 50px;
+	text-align: center;
+}
+.data-table{
+	margin: 0 auto;
+	display: block;
+}
+.data-row{
+	display: inline-block;
+	
+}
+
+.data-cell{
+	position: relative;
+	/*border: 2px solid black;*/
+	height: 50px;
+	width: 444px;
+	float: left;
+
+}
+
+.cell2{
+	margin-left: 50px; 
+}
+
+.userData-container input[type=text], .userData-container input[type=password] {
+  
+      /* padding: 12px 20px; */
+    /* margin: 8px 0px; */
+    border: 1px solid #ccc;
+    float: right;
+    width: 290px;
+    height: 100%;
+
+}
+.userData-container textarea{
+
+height: 214%;
+width: 290px;
+     right: 0px;
+    position: absolute;
+}

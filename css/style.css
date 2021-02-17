@@ -1,6 +1,10 @@
 body{
 margin: 0px;
 }
+*{
+	font-family: "Montserrat",sans-serif;
+	font-weight: normal;
+}
 header{
 	position: relative;
 }
@@ -60,7 +64,8 @@ text-align: center;
 	display: block;
 	font-weight: bold;
 }
-input[type=text], input[type=password] {
+
+.login-box input[type=text],.login-box input[type=password],.login-box textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0px;
