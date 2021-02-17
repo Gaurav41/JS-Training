@@ -1,0 +1,85 @@
+body{
+	
+}
+
+
+.register-box{
+	background-color: #edece8;
+	position: relative;
+	margin: 0 auto;
+	width: 450px;
+	padding: 20px;
+	border: 2px solid #807c7c;
+}
+.register-img-container{
+
+	text-align: center;
+	margin: 0 auto;
+}
+.register-img-container img{
+	height: 100px;
+
+	}
+.register-box h1{
+	margin-top:0px; 
+	text-align: center;
+
+}
+.register-box label{
+	text-align: left;
+	/*display: block;*/
+	font-weight: bold;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#register-btn{
+	
+	float: left;
+}
+#cancle-btn{
+	float: right;
+}
+#register-btn, #cancle-btn{
+display: block;
+margin:  0 auto;
+width: 40%;
+margin-top: 20px;
+background-color:green;
+color: #fff;
+font-size: 20px;
+padding: 10px;
+}
+
+.register-box .btn{
+ position: relative;
+}
+
+
+.register-box p{
+	margin-top:90px;
+	text-align: center;
+	margin-bottom:0px;
+}
+
+.gender-radio
+{
+	
+	margin: 10px 0px;
+}
+
+.gender-radio label{
+	/*float: left;*/
+
+}
+
+.gender-radio-btn
+{  
+	margin: 0px 10px;
+}
+
