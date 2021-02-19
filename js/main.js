@@ -35,7 +35,6 @@ function auth_user(){
 		login_msg.innerHTML="Enter ID and password";
 	}
 }
-
 	
 function isAuthenticated(uname,pass)
 {	
@@ -48,16 +47,10 @@ function isAuthenticated(uname,pass)
 		{
 		return true;
 		}
-		
-
 	}
-	
-	
 	return false;
 
 }
-
-
 
 function User(uname,fname,lname,gender,password,address){
 	this.uname=uname;
@@ -105,6 +98,8 @@ console.log("un:"+uname+" fn:"+fname+" ln:"+lname+" add:"+address+" pass:"+passw
 		let u = JSON.parse(localStorage.getItem('users_data'));
 		u.push(new_user);
 		localStorage.setItem("users_data",JSON.stringify(u));
+		alert("Registration Successful..Kindly login");
+		window.location.href="./index.html";
 
 		}catch(error)
 		{
@@ -115,4 +110,8 @@ console.log("un:"+uname+" fn:"+fname+" ln:"+lname+" add:"+address+" pass:"+passw
 
 }
 
+
+
+
+/***********************Profile page*******************************/
 

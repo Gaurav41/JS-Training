@@ -1,17 +1,42 @@
-.userData-container{
+.userData{
 	/*width: 1000px;*/
-	border: 2px solid black;
-	margin: 0 auto;
-	padding: 50px;
-	font-size: 25px;
-	box-sizing: border-box;
+	border-top: 2px solid #929491;	
+	
+	
+}
+.userData label{
+		font-size: 25px;
 
 
 }
 
+.userData-container{
+	background-color: #edece8;
+	margin: 30px auto;
+    width: 940px;
+    padding: 50px;
+    box-sizing:content-box;
+
+}
+
 .heading h1{
+	margin: 0px;
 	font-size: 50px;
 	text-align: center;
+
+}
+.profile-header{
+	padding: 10px;
+	position: relative;
+	margin: 25px;
+}
+.profile-header img{
+	display: inline-block;
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	top:0;
+	left: 450px;
 }
 .data-table{
 	margin: 0 auto;
@@ -19,6 +44,7 @@
 }
 .data-row{
 	display: inline-block;
+	margin-bottom: 25px;
 	
 }
 
@@ -37,18 +63,100 @@
 
 .userData-container input[type=text], .userData-container input[type=password] {
   
-      /* padding: 12px 20px; */
+     /* padding: 12px 20px; */
     /* margin: 8px 0px; */
     border: 1px solid #ccc;
     float: right;
     width: 290px;
-    height: 100%;
+    height: 50px;
+    padding-left: 15px;
+    font-size: 18px;
 
 }
-.userData-container textarea{
 
-height: 214%;
-width: 290px;
-     right: 0px;
+.userData-container textarea{
+	border: 1px solid #ccc;
+	height: 130px;
+	width: 290px;
+    right: 0px;
     position: absolute;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+.gender-label
+{
+
+	font-size: 20px;	
+}
+.data-table label{
+	    margin-top: 11px;
+    margin-bottom: 11px;
+    /* top: 43px; */
+    position: absolute;
+}
+.gender-radio{
+	display: inline-block;
+	right: 50px;
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 14px;
+}
+.gender-radio-btn{
+	margin: 0 4px 0 13px; 
+}
+#edit-btn{
+
+	display: block;
+	margin: 0 auto;
+	/*width: 100px;
+	height: 30px;*/
+	
+	background-color:#984beb;
+
+}
+
+.update-info-btn{
+	margin: 0 auto;
+	text-align: center;
+
+}
+
+.update-info-btn input{
+	/*width: 100px;
+	height: 30px;*/
+	
+	margin: 0 auto;
+}
+
+.edit-info-btn{
+	margin-top:50px; 
+	display: block;
+}
+
+
+.update-info-btn{
+	display: none;
+	margin-top:50px; 
+}
+
+#save-btn{
+	background-color:#58b85d;
+	margin-right: 25px;	 
+
+}
+
+#cancle-btn{
+
+	background-color:#008CBA;
+	margin-left: 25px;	 
+
+
+}
+.p-btn{
+	font-size: 25px;
+	border-radius: 15px; 
+	height: 45px;
+	width: 120px;
+	color: white;
 }

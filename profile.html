@@ -4,14 +4,18 @@
 	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/style-profile.css">
+	<script type="text/javascript">
+		
+	</script>
 </head>
 <body>
+
 	<main>
 		<header>
 			<div class="navbar">
 				<ul>
 				<label id="logo">Todo App</label>
-				  <li><a href="index.html">Logout</a></li>
+				  <li><a id="logout" href="index.html">Logout</a></li>
 				  <li><a href="profile.html">Profile</a></li>
 				  <li><a href="list-Todos.html">List Todos</a></li>
 				</ul>
@@ -19,10 +23,12 @@
 		</header>
 
 		<section >
-			<div class="heading">
+			<div class="profile-header heading">
+				<img src="img/login.png">
 				<h1>My Profile</h1>
 			</div>
-			<div class="userData-container">
+			<div class="userData">
+				<div class="userData-container">
 				<form>
 					<div class="data-table">
 						<div class="data-row">
@@ -49,25 +55,48 @@
 						<div>
 							<div class="data-row">
 								<div class="data-cell" >
-									<label > Gender :</label>
-									<input id="gender" type="text" name="gender">
+									<!-- <label > Gender :</label> -->
+									<!-- <input id="gender" type="text" name="gender"> -->
+									<!-- <select id="ddlViewBy">
+									  <option value="Male">Male</option>
+									  <option value="Female">Female</option>
+									  <option value="Other">Other</option>
+									</select> -->
+							<label > Gender :</label>	
+							<div id="gender" class="gender-radio" >
+						
+							<input class="gender-radio-btn" id='m' type="radio" value="Male" name="gender"> <span class="gender-label">Male</span>
+					    	<input class="gender-radio-btn" id="f" type="radio" value="Female" name="gender"><span class="gender-label">Female</span>
+					    	<input class="gender-radio-btn" id="o" type="radio" value="Other" name="gender"><span class="gender-label">Other</span>
+					 	</div>
 								</div>
 							</div>
 							
 						</div>
-						<div class="btn">
-							<input id="update-info-btn" type="button" value="Save" >
-							<input id="cancle-btn" type="button" value="Cancle" >
+						
+						<!-- <div class="update-info-btn " id="update-info-btn">
+							<input id="save-btn" class="p-btn" type="button" value="Save" >
+							<input id="cancle-btn" class="p-btn" type="reset" value="cancle" >
 
-						</div>
+						</div> -->
 					</div>
 					
 				</form>
+				<div class="update-info-btn " id="update-info-btn">
+							<input id="save-btn" class="p-btn" type="button" value="Save" >
+							<input id="cancle-btn" class="p-btn" type="reset" value="cancle" >
+
+						</div>
+				<div class="edit-info-btn" id="edit-info-btn" >
+							<button class="p-btn" id="edit-btn">Edit</button>
+						</div>
+			</div>
+			
 			</div>
 				
 		</section>
 	</main>
-
+	<script type="text/javascript" src="js/profile.js"></script>
 
 </body>
 </html>
