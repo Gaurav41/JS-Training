@@ -59,6 +59,7 @@ function User(uname,fname,lname,gender,password,address){
 	this.gender=gender;
 	this.password=password;
 	this.address=address;
+	this.todos=[];
 
 }
 

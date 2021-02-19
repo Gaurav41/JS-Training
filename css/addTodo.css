@@ -1,0 +1,120 @@
+
+header{
+	position: relative;
+}
+body{
+	margin: 0;
+}
+#logo{
+	
+ display: block;
+ float: left;
+ text-align: center;
+ color: white;
+ margin: 0 auto;
+  padding: 14px 16px;
+}
+.navbar ul {
+
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #333;
+  font-size: 18px;
+}
+
+.navbar li {
+  float: right;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  background-color: #111;
+}
+
+
+
+
+.container{
+	
+	margin: 0;
+	padding: 0;
+}
+
+.addtodo-container{
+
+	background-color: #edece8;
+	text-align: center;
+	
+	padding: 10px;
+
+}
+.heading{
+	text-align: center;
+
+}
+.error-msg{
+	color: red;
+	font-size: 20px;
+	display: none;
+}
+.form-group{
+	font-size: 25px;
+	margin:20px auto; 	 
+}
+.form-filed{
+	padding-left: 15px;
+	height: 40px;
+    width: 200px;
+
+}
+
+label{
+
+}
+.form-container{
+	border: 2px solid;
+	width: 50%;
+	margin: 0 auto;
+}
+.main-label{
+	font-size: 25px;
+	color: green;
+
+}
+
+.form-control{
+	font-size: 25px;
+	border-radius: 15px; 
+	height: 45px;
+	width: 140px;
+	color: white;
+	
+	outline: none;
+}	
+#reminder-date{
+	display: none;
+}
+.add-btn{
+	background-color:#58b85d;
+}
+.add-btn:hover{
+	color:#58b85d;
+	background-color:  white;
+}
+.reset-btn{
+	background-color: #969595;
+	
+}
+.reset-btn:hover{
+	color:#58b85d;
+	background-color:  white;
+}
