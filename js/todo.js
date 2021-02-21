@@ -109,9 +109,11 @@ function isValidate(){
    	
 
    	
-		categories = JSON.stringify(categories);
+		/*categories = JSON.stringify(categories);*/
 
-		let new_todo=new Todo(date,categories,status,reminderStatus,remdate.value,isPublic);
+		let new_todo=new Todo(date.value,categories,status,reminderStatus,remdate.value,isPublic);
+
+        console.log("Date : "+date);
 
 		addNewTodo(new_todo);
     
@@ -119,7 +121,7 @@ function isValidate(){
 
 function addNewTodo(new_todo){
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
-		console.log("in addNewTodo");
+		console.log("in addNewTodo:date"+new_todo.date);
 		var index=-1;
 		for(let i=0;i<users_data.length;i++)
 		{		
