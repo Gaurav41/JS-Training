@@ -60,10 +60,7 @@ function User(uname,fname,lname,gender,password,address){
 	this.password=password;
 	this.address=address;
 	this.todos=[];
-
 }
-
-
 
 function addUser()
 {

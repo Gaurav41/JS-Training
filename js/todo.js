@@ -15,8 +15,6 @@ function showRemDate(){
     }else{
     	rmd.style.display="none";
     }
-	
-
 }
 
 function Todo(date,categories,status,reminder,reminderDate,isPublic){
@@ -115,13 +113,7 @@ function isValidate(){
 
 		let new_todo=new Todo(date,categories,status,reminderStatus,remdate.value,isPublic);
 
-		addNewTodo(JSON.stringify(new_todo));
-
-
-		
-
-
-    
+		addNewTodo(new_todo);
     
 }
 
@@ -142,8 +134,8 @@ function addNewTodo(new_todo){
 
 		users_data[index].todos.push(new_todo);
 		localStorage.setItem("users_data",JSON.stringify(users_data));
-
-
-
 }
+
+
+
 
