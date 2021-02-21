@@ -1,4 +1,4 @@
-
+    
 const LoggedInUser =localStorage.getItem("LoggedInUser");
 if(LoggedInUser=="")
 {
@@ -22,6 +22,7 @@ function Todo(date,categories,status,reminder,reminderDate,isPublic){
 	this.categories =categories;
 	this.status=status;
 	this.reminder=reminder;
+    this.remDate=reminderDate;
 	this.isPublic=isPublic;
 }
 
@@ -106,12 +107,8 @@ function isValidate(){
      	error.style.display="block";
      	return false;
    	}
-   	
-
-   	
-		categories = JSON.stringify(categories);
-
-		let new_todo=new Todo(date,categories,status,reminderStatus,remdate.value,isPublic);
+   
+		let new_todo=new Todo(date.value,categories,status,reminderStatus,remdate.value,isPublic);
 
 		addNewTodo(new_todo);
     
