@@ -1,0 +1,59 @@
+
+
+.container{
+	
+	margin: 0;
+	padding: 0;
+}
+
+
+.heading{
+  text-align: center;
+  font-size: 
+}
+
+.table-contorls{
+  position: relative;
+  height:50px;
+
+
+}
+.filters{
+  display: inline;
+  position: relative;
+  float: left;
+}
+
+.action-btns{
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  height: 10px;
+}
+
+.list-table-cntainer{
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+#list-table{
+ 
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#list-table{
+  text-align: left;
+  padding: 12px;
+}
+
+#list-table th,#list-table td{
+  border-bottom:  1px solid #ddd;
+
+}
+
+#list-table th,#list-table tr:hover{
+   background-color: #f1f1f1;
+}

@@ -86,13 +86,11 @@ function updateUser(u,index,users_data){
 			{
 				alert(error);
 			}
-			alert("Data Saved Successfully");		
+			alert("Data Saved Successfully");
+			document.getElementById("edit-info-btn").style.display="block";
+			document.getElementById("update-info-btn").style.display="none";
 			}
-					
-
 	}
-
-
 }
 
 function update_form_validate(fname,lname,address,gender){
@@ -121,33 +119,17 @@ function update_form_validate(fname,lname,address,gender){
 	return true;
 }
 
-
-function getUserData(LoggedInUser){
-	/*let u = JSON.parse(localStorage.getItem('users_data'));
-	console.log("in getdata");
-	var index=-1;
-	for(let i=0;i<u.length;i++)
-	{		
-		if(u[i].uname===LoggedInUser)
-		{
-		index=i;
-		break;
-		}
-	}
-	return u[index];*/
-}
-
 var edit=document.getElementById("edit-btn");
 edit.onclick=()=>{
 	document.getElementById("edit-info-btn").style.display="none";
-	edit.style.display="none";
+	/*edit.style.display="none";*/
 	document.getElementById("update-info-btn").style.display="block";
 }	
 
 var cancle=document.getElementById("cancle-btn");
 cancle.onclick=()=>{
 	document.getElementById("edit-info-btn").style.display="block";
-	edit.style.display="block";
+	/*edit.style.display="block";*/
 	document.getElementById("update-info-btn").style.display="none";
 }	
 
