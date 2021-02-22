@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 	document.getElementById("sort-filter").addEventListener("change",()=>{
 		sortBy=document.getElementById("sort-filter").value;
-		if(sortBy=="Date"){
+		if(todo_array.length>1){
+			if(sortBy=="Date"){
 			todo_array=sortByDate(todo_array);
 		}else if(sortBy=="Status")
 		{	
@@ -71,6 +72,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 			todo_array=sortByTitle(todo_array);
 
 		}
+		}
+
 		showTodoList(todo_array);
 	});
 
@@ -120,9 +123,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 		console.log("in edit todo fuunnn");
 		let selected_todos = document.querySelectorAll(".action-box");   
 		let cnt=0;
+		let tid;
         for (let i = 0; i < selected_todos.length; i++) {   
             if(selected_todos[i].checked == true)
             {	
+            	tid=Number(selected_todos[i].name);
             	cnt++;
 
             }   
@@ -136,7 +141,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         	alert("Select One todo for edit" );
         	return false;
         }else{
-        	window.location.href="./edit-todo.html";
+        	window.location.href="./edit-todo.html?tid="+tid;
         }
 
         users_data[index].todos=todo_array;
@@ -221,7 +226,6 @@ function sortByDate(todo_array){
 }
 
 function sortByTitle(todo_array){
-	
 	todo_array.sort(function(a,b){
 		aTitle=a.title.toUpperCase();
 		bTitle=b.title.toUpperCase();

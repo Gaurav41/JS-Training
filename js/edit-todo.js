@@ -1,11 +1,19 @@
-
-const LoggedInUser =localStorage.getItem("LoggedInUser");
-if(LoggedInUser=="")
-{
-	window.location.href="./index.html";
-}
+let id=Number(new URL(window.location.href).searchParams.get("tid"));
+LoggedInUser=localStorage.getItem('LoggedInUser');
+let	users_data = JSON.parse(localStorage.getItem('users_data'));
+	var index=-1;
+		for(var i=0;i<users_data.length;i++)
+		{		
+			if(users_data[i].uname===LoggedInUser)
+			{
+			index=i;
+			break;
+			}
+		}
+		let todos=users_data[index].todos;
 
 function showRemDate(){
+
         let select=document.getElementById("reminder");
         let rmd=document.getElementById("reminder-date");
         let reminderStatus=select.options[select.selectedIndex].value;
@@ -16,34 +24,78 @@ function showRemDate(){
         }
     }
 
-document.addEventListener('DOMContentLoaded',()=>{
 
-function generateId(){
-        let users_data = JSON.parse(localStorage.getItem('users_data'));
-        
-        var index=-1;
-        for(let i=0;i<users_data.length;i++)
-        {       
-            if(users_data[i].uname===LoggedInUser)
-            {
-            index=i;
-            break;
-            }
-        }
-       // console.log("length:"+users_data[index].todos.length);
-        let len=users_data[index].todos.length;
-        if(len==0){
-            return 0;
-        }else{
-            return users_data[index].todos[len-1].id;
-        }
-    
+document.addEventListener("DOMContentLoaded",()=>{
+
+
+/*console.log(todos[0]);
+console.log(id);
+console.log(todos[0].id===id);*/
+
+let title,date,categories,status,reminder,remDate,isPublic;
+for(var j=0;j<todos.length;j++)
+{
+	if(todos[j].id===id)
+	{
+		title=todos[j].title;
+		date=(todos[j].date);
+		categories=todos[j].categories;
+		status=todos[j].status;
+		reminder=todos[j].reminder;
+		remDate= (todos[j].remDate);
+		isPublic=todos[j].isPublic;
+		console.log(date);
+		break;
+	}	
 }
 
-function Todo(title,date,categories,status,reminder,reminderDate,isPublic){
-    /*let ab=id()+1;
-    console.log(ab);*/
-    this.id=generateId()+1;
+let ftitle=document.getElementById("title");
+ftitle.value=title;
+/*let categories_field=document.querySelectoreAll(".cat");
+*/
+console.log();
+let fdate=document.getElementById("date");
+fdate.value=date;
+
+for (var i = 0; i<categories.length; i++) {	
+	name=categories[i];
+	document.getElementById(name).checked=true;
+
+}
+
+if(status=="done"){
+	document.getElementById("mrkD").checked=true;
+}else if(status=="ongoing"){
+	document.getElementById("mrkO").checked=true;
+
+}else{
+	document.getElementById("mrkN").checked=true;
+}
+
+
+if(reminder=="No"){
+	document.getElementById("reminder").selectedIndex=0;
+}else{
+	document.getElementById("reminder").selectedIndex=1;
+	showRemDate();
+}
+
+document.getElementById("remD").value=remDate;
+
+if(isPublic=="Yes"){
+	document.getElementById("isPublic").checked=true;
+
+}else{
+	document.getElementById("isNotPublic").checked=true;
+}
+
+
+
+});
+
+
+	function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
+    this.id=id;
     this.title=title
 	this.date=date;
 	this.categories =categories;
@@ -53,7 +105,7 @@ function Todo(title,date,categories,status,reminder,reminderDate,isPublic){
 	this.isPublic=isPublic;
 }
 
-document.getElementById("add").addEventListener("click",addTodo);
+document.getElementById("save").addEventListener("click",addTodo);
 
 function addTodo(){
 
@@ -136,22 +188,27 @@ function addTodo(){
      	return false;
    	}
 
-		let new_todo=new Todo(title.value,date.value,categories,status,reminderStatus,remdate,isPublic);
+		let new_todo=new Todo(id,title.value,date.value,categories,status,reminderStatus,remdate,isPublic);
 
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
-		console.log("in addNewTodo");
-		var index=-1;
-		for(let i=0;i<users_data.length;i++)
-		{		
-			if(users_data[i].uname===LoggedInUser)
-			{
-			index=i;
-			break;
-			}
-		}
-		// let u=users_data[index];
-		// u["todos"].push(new_todo);
-		if(users_data[index].todos.push(new_todo)){
+		console.log("in update todo");
+			
+	for(var j=0;j<todos.length;j++)
+{
+	if(todos[j].id===id)
+	{
+		todos[j].title=title.value;
+		todos[j].date=date.value;
+		todos[j].categories=categories;
+		todos[j].status=status;
+		todos[j].reminder=reminderStatus;
+		todos[j].remDate=remdate;
+		todos[j].isPublic=isPublic;
+		break;
+	}
+}
+		users_data[index].todos=todos;
+
             try{
                 localStorage.setItem("users_data",JSON.stringify(users_data));
                 alert("New Todo added successfully");
@@ -159,14 +216,11 @@ function addTodo(){
             }catch(error){
                  alert("Something went wrong \n Error:"+error);
             }
-            
-        }
-        
-           
-        
-		
 }
 
+
+
+document.getElementById("cancle").addEventListener("click",()=>{
+
+window.location.href="./todo-list.html";
 });
-
-
