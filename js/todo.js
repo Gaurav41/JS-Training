@@ -6,18 +6,45 @@ if(LoggedInUser=="")
 }
 
 function showRemDate(){
-	let select=document.getElementById("reminder");
-	let rmd=document.getElementById("reminder-date");
-    let reminderStatus=select.options[select.selectedIndex].value;
-    if(reminderStatus==="Yes"){
-    	
-    	rmd.style.display="block";
-    }else{
-    	rmd.style.display="none";
+        let select=document.getElementById("reminder");
+        let rmd=document.getElementById("reminder-date");
+        let reminderStatus=select.options[select.selectedIndex].value;
+        if(reminderStatus==="Yes"){           
+            rmd.style.display="block";
+        }else{
+            rmd.style.display="none";
+        }
     }
+
+document.addEventListener('DOMContentLoaded',()=>{
+
+function generateId(){
+        let users_data = JSON.parse(localStorage.getItem('users_data'));
+        
+        var index=-1;
+        for(let i=0;i<users_data.length;i++)
+        {       
+            if(users_data[i].uname===LoggedInUser)
+            {
+            index=i;
+            break;
+            }
+        }
+       // console.log("length:"+users_data[index].todos.length);
+        let len=users_data[index].todos.length;
+        if(len==0){
+            return 0;
+        }else{
+            return users_data[index].todos[len-1].id;
+        }
+    
 }
 
-function Todo(date,categories,status,reminder,reminderDate,isPublic){
+function Todo(title,date,categories,status,reminder,reminderDate,isPublic){
+    /*let ab=id()+1;
+    console.log(ab);*/
+    this.id=generateId()+1;
+    this.title=title
 	this.date=date;
 	this.categories =categories;
 	this.status=status;
@@ -27,21 +54,20 @@ function Todo(date,categories,status,reminder,reminderDate,isPublic){
 }
 
 document.getElementById("add").addEventListener("click",addTodo);
+
 function addTodo(){
-console.log("add todo");
 
-	if(isValidate())
-	{
-
-	}
-	/*window.location.href="./index.html";*/
-	console.log("added");
-}
-
-
-function isValidate(){
+    console.log("add todo");
 	 let error=document.getElementById("error");
 	console.log("in validate");
+    let title=document.getElementById("title");
+    if(title.value==="")
+    {
+        error.innerHTML="Please enter todo title";
+        error.style.display="block";
+        date.focus();
+        return false;
+    }
 	let date=document.getElementById("date");
 	if(date.value=="")
     {
@@ -58,8 +84,7 @@ function isValidate(){
             if(categories_ip[i].checked == true)
             {
             	categories.push(categories_ip[i].value);
-            	flag=true;
-
+            	flag=true;            
             }
                
         }
@@ -82,10 +107,9 @@ function isValidate(){
     let select=document.getElementById("reminder");
     let reminderStatus=select.options[select.selectedIndex].value;
     console.log(reminderStatus);
-    let remdate="NA";
+    let remdate;
     if(reminderStatus=="Yes")
     {
-
      remdate=document.getElementById("remD");
      
      if(remdate.value==""){
@@ -94,6 +118,11 @@ function isValidate(){
     	remdate.focus();
      	return false;
      }
+     else{
+        remdate=remdate.value;
+     }
+    }else{
+        remdate="NA";
     }
     
    let isPublic;
@@ -107,14 +136,9 @@ function isValidate(){
      	error.style.display="block";
      	return false;
    	}
-   
-		let new_todo=new Todo(date.value,categories,status,reminderStatus,remdate.value,isPublic);
-
-		addNewTodo(new_todo);
-    
-}
-
-function addNewTodo(new_todo){
+        
+		let new_todo=new Todo(title.value,date.value,categories,status,reminderStatus,remdate,isPublic);
+		/*addNewTodo(new_todo);*/
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
 		console.log("in addNewTodo");
 		var index=-1;
@@ -128,11 +152,22 @@ function addNewTodo(new_todo){
 		}
 		// let u=users_data[index];
 		// u["todos"].push(new_todo);
-
-		users_data[index].todos.push(new_todo);
-		localStorage.setItem("users_data",JSON.stringify(users_data));
+		if(users_data[index].todos.push(new_todo)){
+            try{
+                localStorage.setItem("users_data",JSON.stringify(users_data));
+                alert("New Todo added successfully");
+                window.location.href="./todo-list.html";
+            }catch(error){
+                 alert("Something went wrong \n Error:"+error);
+            }
+            
+        }
+        
+           
+        
+		
 }
 
-
+});
 
 

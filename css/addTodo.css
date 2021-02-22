@@ -1,47 +1,4 @@
 
-header{
-	position: relative;
-}
-body{
-	margin: 0;
-}
-#logo{
-	
- display: block;
- float: left;
- text-align: center;
- color: white;
- margin: 0 auto;
-  padding: 14px 16px;
-}
-.navbar ul {
-
-  list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  overflow: hidden;
-  background-color: #333;
-  font-size: 18px;
-}
-
-.navbar li {
-  float: right;
-}
-
-.navbar li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.navbar li a:hover {
-  background-color: #111;
-}
-
-
-
 
 .container{
 	

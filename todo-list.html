@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>TODO List</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/todo-list.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
 				<label id="logo">Todo App</label>
 				  <li><a id="logout" href="index.html">Logout</a></li>
 				  <li><a href="profile.html">Profile</a></li>
-				  <li><a href="list-Todos.html">List Todos</a></li>
+				  <li><a href="todo-list.html">List Todos</a></li>
 				  <li><a href="addTodo.html">Add Todo</a></li>
 				</ul>
 			</div>
@@ -23,27 +24,43 @@
 			<div>
 				<h1 class="heading">TODO List</h1>
 			</div>
+			
+			
 			<div class="list-table-cntainer">
-				
+				<div class="table-contorls">
+				<div class="filters">
+					<label for="sort-filter" >Sort By: </label>
+					<select name="sort-filter" id="sort-filter" >
+						<option value="Title">Title</option>
+						<option value="Date">Date</option>
+						<option value="Status">Status</option>
+					</select>
+				</div>
+				<div class="action-btns">
+					<button id="mrkD-todo">Mark as Done</button>
+					<button id="delete-todo">Delete</button>
+					<button id="edit-todo">Edit Todo</button>
+				</div>
+			</div>
 					<table id="list-table">
-						<tr class="table-header">
-							<th>TODO</th>
-							<th>DATE</th>
-							<th>CATEGORIES</th>
-							<th>STATUS</th>
-							<th>REMINDER</th>
-							<th>REM DATE</th>
-							<th>IS PUBLIC?</th>
-						</tr>
-						<tr>
-							<td> ahgs</td>
-							<td> 20-12-2020</td>
-							<td> ada,asd,adasd</td>
-							<td> Done</td>
-							<td> No</td>
-							<td> NA</td>
-							<td> Yes</td>
-						</tr>
+						<thead>
+							<tr class="table-header">
+								<th>TODO</th>
+								<th>DATE</th>
+								<th>CATEGORIES</th>
+								<th>STATUS</th>
+								<th>REMINDER</th>
+								<th>REM DATE</th>
+								<th>IS PUBLIC?</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="table-body">
+							
+						</tbody>
+
+						
+						
 					</table>				
 			
 				
