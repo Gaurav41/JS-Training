@@ -25,23 +25,53 @@
 				<h1 class="heading">TODO List</h1>
 			</div>
 			
-			
 			<div class="list-table-cntainer">
 				<div class="table-contorls">
-				<div class="filters">
-					<label for="sort-filter" >Sort By: </label>
-					<select name="sort-filter" id="sort-filter" >
-						<option value="Title">Title</option>
-						<option value="Date">Date</option>
-						<option value="Status">Status</option>
-					</select>
+					<div class="sf">	
+						<div class="filters">
+							<label for="sort-filter" >Sort By: </label>
+							<select class="s1" name="sort-filter" id="sort-filter" >
+								<option value="Title">Title (default)</option>
+								<option value="Date">Date</option>
+								<option value="Status">Status</option>
+							</select>
+						</div>	
+						<div class="filters">
+								<label>Filter by name</label>
+								<input  type="text" name="nsearch" id="nsearch">	
+						</div>
+						<div class="filters dfilter">	
+							<label>Filter by date</label>
+							<input type="date" class="dateFilter" name="sdate" id="sdate"><label>:</label>
+							<input type="date" class="dateFilter" name="edate" id="edate">
+						</div>
+						<div class="filters">
+							<label>Category</label>
+							<select name="catFilter" class="s2" id="catFilter" >
+								<option value="">Select</option>
+								<option value="Company-work">Company-work</option>
+								<option value="College-work">College-work</option>
+								<option value="Urgent">Urgent</option>
+								<option value="Important">Important</option>
+								<option value="Other">Other</option>
+							</select>
+						</div>
+						<div class="action-btns" id="action-btns">
+							<button id="mrkD-todo">Mark as Done</button>
+							<button id="delete-todo">Delete</button>
+							<button id="edit-todo">Edit Todo</button>
+						</div>
+					</div>
+					<div class="cf">
+						<button id="nf">clear1</button>
+						<button id="df">clear2</button>
+						<button id="cf">clear3</button>
+					</div>
+				
+				
+
 				</div>
-				<div class="action-btns">
-					<button id="mrkD-todo">Mark as Done</button>
-					<button id="delete-todo">Delete</button>
-					<button id="edit-todo">Edit Todo</button>
-				</div>
-			</div>
+					<div id="error"></div>
 					<table id="list-table">
 						<thead>
 							<tr class="table-header">
@@ -57,13 +87,8 @@
 						</thead>
 						<tbody id="table-body">
 							
-						</tbody>
-
-						
-						
+						</tbody>	
 					</table>				
-			
-				
 			</div>
 		</section>
 		

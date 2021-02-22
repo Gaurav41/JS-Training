@@ -7,6 +7,8 @@
 }
 
 
+/*Primary color grrn #58b85d */
+
 .heading{
   text-align: center;
   font-size: 
@@ -14,12 +16,13 @@
 
 .table-contorls{
   position: relative;
-  height:50px;
-
-
+  height:60px;
+  border: 1px solid black;
+  background-color: #edece8;
+  padding: 10px;
 }
 .filters{
-  display: inline;
+  display: inline-block;
   position: relative;
   float: left;
 }
@@ -27,17 +30,115 @@
 .action-btns{
   display: inline-block;
   position: absolute;
-  right: 0;
+  right: 5px;
   height: 10px;
+  color: white;
 }
 
+#mrkD-todo{
+    display: block;
+    background-color: #58b85d;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 130px;
+    height: 25px;
+}
+#delete-todo{
+  background-color: red;
+  color: white;
+  height: 25px;
+}
+#edit-todo{
+  background-color: #f7c539;
+  color: white;
+  height: 25px;
+}
+.cf{
+  position: absolute;
+  width: 85%;
+ bottom: 5px;
+  left: 0px;
+  display: block;
+  height: 25px;
+/*  border: 1px solid black;
+*/}
+.cf button{
+  width: 100px;
+  height: 25px;
+}
+ #nf{
+  position: absolute;
+  left: 321px;
+  display: none;
+
+  }
+#df{
+  position: absolute;
+  left: 653px;
+  display: none;
+  }
+#cf{
+ position: absolute;
+  right: 30px;
+  display: none;
+  }
+
 .list-table-cntainer{
+
   padding-left: 100px;
   padding-right: 100px;
+
+}
+
+.s1{
+  background-color: white;
+  border:none;
+  width: 110px;
+  height: 30px;
+  margin-right: 20px; 
+}
+.s2{
+  background-color: white;
+  border:none;
+
+  width: 130px;
+  height: 30px;
+  margin-right: 20px; 
+  text-align: right;
+}
+#nsearch{
+     height: 28px;
+    margin-right: 20px;
+    border: none;
+
+}
+.dfilter{
+
+  height: 20px;
+  margin-right: 20px; 
+
+}
+
+input [ type="date"]{
+  height: 200px;
+}
+
+#sdate ,#edate{
+   height: 30px;
+   border: none;
+   margin: 0;
+   text-align: right;
+
+}
+#error{
+  margin: 0 auto;
+  text-align:center;
+  color: red;
 }
 
 #list-table{
- 
+ margin-top: 10px; 
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;
