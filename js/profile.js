@@ -24,6 +24,7 @@ window.onload = function(){
 		/*var u=getUserData(LoggedInUser);*/
 
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
+
 		console.log("in getdata");
 		var index=-1;
 		for(let i=0;i<users_data.length;i++)
@@ -52,6 +53,11 @@ window.onload = function(){
 				document.getElementById("o").checked=true;	
 			}
 
+		let user_img=localStorage.getItem(u.uname);
+		if(user_img)
+		{
+			document.getElementById("user-img").setAttribute("src",user_img);
+		}
 		updateUser(u,index,users_data);
 		
 	}

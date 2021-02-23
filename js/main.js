@@ -4,14 +4,40 @@ if(!localStorage.getItem('users_data'))
 
 	}
 
-var login_btn=document.getElementById("login-btn");
-if(login_btn){
-	login_btn.addEventListener("click", auth_user);
-}
-var register_btn=document.getElementById("register-btn");
-if(register_btn){
-	register_btn.addEventListener("click", addUser);
-}
+let user_img;
+
+document.addEventListener("DOMContentLoaded",()=>{
+		const img_input=document.getElementById("uimg");
+		if(img_input){
+			img_input.addEventListener("change",function(){
+				const reader = new FileReader();
+				reader.	readAsDataURL(this.files[0]);
+				reader.addEventListener('load',()=>{
+			
+					/*localStorage.setItem("uimg",reader.result);*/
+					user_img=reader.result;
+					/*alert(user_img);*/
+			
+				});
+			});
+
+		};
+		var login_btn=document.getElementById("login-btn");
+		if(login_btn){
+			login_btn.addEventListener("click", auth_user);
+		}
+		var register_btn=document.getElementById("register-btn");
+		if(register_btn){
+			register_btn.addEventListener("click", addUser);
+		}
+
+	});
+
+
+
+
+
+
 
 function auth_user(){
 	var uname=document.getElementById("username").value;
@@ -95,6 +121,8 @@ console.log("un:"+uname+" fn:"+fname+" ln:"+lname+" add:"+address+" pass:"+passw
 	try{
 		let u = JSON.parse(localStorage.getItem('users_data'));
 		u.push(new_user);
+		localStorage.setItem(uname,user_img);
+
 		localStorage.setItem("users_data",JSON.stringify(u));
 		alert("Registration Successful..Kindly login");
 		window.location.href="./index.html";

@@ -59,8 +59,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	};
 
 	let todo_array= getTodos();
-	todo_array=sortByTitle(todo_array);
-	showTodoList(todo_array);
+	todo_array=sortByTitle(todo_array); /**********************************************************/showTodoList(todo_array);
 
 
 	document.getElementById("sort-filter").addEventListener("change",()=>{
@@ -205,8 +204,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 		for(var i=0;i<todo_array.length;i++)
 		{
 			todo=todo_array[i];
+			
 			new_row += "<tr id="+i+">"+
-
 			"<td>" +todo.title+"</td>"+
 			"<td>"+todo.date+"</td>"+
 			"<td>"+todo.categories+"</td>"+
@@ -214,23 +213,28 @@ document.addEventListener('DOMContentLoaded',()=>{
 			"<td>" +todo.reminder+"</td>"+
 			"<td>" +todo.remDate+"</td>"+
 			"<td>" +todo.isPublic+"</td>"+
-			"<td> <input type='checkbox' name="+todo.id+" class='action-box' id=td"+i+" value="+i+" onchange=showActions();></td>"+
-			"</tr>";
+			"<td> <input type='checkbox' name="+todo.id+" class='action-box' id=td"+i+" value="+i+" onchange=showActions();></td>";
+			if(todo.attachment!==""){
+				new_row +="<td><a href='view.html?id="+ todo.id+"' target=_blank >View</a></td>"+"</tr>";
+			}else{
+				new_row +="<td></td></tr>";	
+			}
+			
 		}
 		table_body.innerHTML +=new_row;
 	}
-
+	
 	function sortByDate(todo_array){
-		todo_array.sort(function(a,b){
+		/*todo_array.sort(function(a,b){
 			aDate=Date.parse(a.date);
 			bDate=Date.parse(b.date);
 		  return aDate- bDate;
-		});
+		});*/
 		return todo_array;
 	}
 
 	function sortByTitle(todo_array){
-		todo_array.sort(function(a,b){
+		/*todo_array.sort(function(a,b){
 			aTitle=a.title.toUpperCase();
 			bTitle=b.title.toUpperCase();
 			if(aTitle>bTitle)
@@ -239,14 +243,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 				return -1;
 			}
 			return 0;
-		});
+		});*/
 			return todo_array;
 
 	}
 
 	function sortByStatus(todo_array){
 		
-		todo_array.sort(function(a,b){
+		/*todo_array.sort(function(a,b){
 			aStatus=a.status.toUpperCase();
 			bStatus=b.status.toUpperCase();
 			if(aStatus>bStatus)
@@ -255,7 +259,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 				return -1;
 			}
 			return 0;
-		});
+		});*/
 		return todo_array;
 	}
 

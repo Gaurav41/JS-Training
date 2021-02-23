@@ -34,7 +34,9 @@
 	width: 80px;
 	height: 80px;
 	top:0;
-	left: 450px;
+	left: 500px;
+	border-radius: 40px;
+	border:1px solid #a8a8a7;
 }
 .data-table{
 	margin: 0 auto;

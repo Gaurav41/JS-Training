@@ -18,6 +18,20 @@ function showRemDate(){
 
 document.addEventListener('DOMContentLoaded',()=>{
 
+let attachment="";
+    const file=document.getElementById("attachment");
+        if(file){
+            file.addEventListener("change",function(){
+                const reader = new FileReader();
+                reader. readAsDataURL(this.files[0]);
+                reader.addEventListener('load',()=>{
+                    attachment=reader.result;
+                    
+                });
+            });
+
+        };
+
 function generateId(){
         let users_data = JSON.parse(localStorage.getItem('users_data'));
         
@@ -40,7 +54,7 @@ function generateId(){
     
 }
 
-function Todo(title,date,categories,status,reminder,reminderDate,isPublic){
+function Todo(title,date,categories,status,reminder,reminderDate,isPublic,attachment){
     /*let ab=id()+1;
     console.log(ab);*/
     this.id=generateId()+1;
@@ -51,6 +65,7 @@ function Todo(title,date,categories,status,reminder,reminderDate,isPublic){
 	this.reminder=reminder;
     this.remDate=reminderDate;
 	this.isPublic=isPublic;
+    this.attachment=attachment;
 }
 
 document.getElementById("add").addEventListener("click",addTodo);
@@ -136,7 +151,10 @@ function addTodo(){
      	return false;
    	}
 
-		let new_todo=new Todo(title.value,date.value,categories,status,reminderStatus,remdate,isPublic);
+
+
+
+		let new_todo=new Todo(title.value,date.value,categories,status,reminderStatus,remdate,isPublic,attachment);
 
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
 		console.log("in addNewTodo");
