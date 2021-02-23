@@ -173,7 +173,7 @@ function addTodo(){
             try{
                 localStorage.setItem("users_data",JSON.stringify(users_data));
                 alert("New Todo added successfully");
-                window.location.href="./todo-list.html";
+                window.location.href="./todoList.html";
             }catch(error){
                  alert("Something went wrong \n Error:"+error);
             }

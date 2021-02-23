@@ -60,24 +60,26 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 	let todo_array= getTodos();
 	todo_array=sortByTitle(todo_array); /**********************************************************/showTodoList(todo_array);
-
+	// sortTable();
 
 	document.getElementById("sort-filter").addEventListener("change",()=>{
 		sortBy=document.getElementById("sort-filter").value;
-		if(todo_array.length>1){
-			if(sortBy=="Date"){
-			todo_array=sortByDate(todo_array);
-		}else if(sortBy=="Status")
-		{	
-			todo_array=sortByStatus(todo_array);
-		}else{ 
-			//sortBy=="Title"
-			todo_array=sortByTitle(todo_array);
-
+		if (sortBy){
+			let col=-1;
+			switch(sortBy){
+				case "Title" :col=0; 
+							sortTableByStrings(col);
+							break;
+				case "Status" :col=3; 
+							sortTableByStrings(col);
+							break;
+				case "Date" : col=1;
+							sortTableByDate(col);
+							break;			
+				default: return ;
+			}
 		}
-		}
 
-		showTodoList(todo_array);
 	});
 
 
@@ -274,33 +276,34 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 	document.getElementById("nsearch").addEventListener("change",()=>{	
-		document.getElementById("nf").style.display="block";
-	  let input, filter_text, table_body, tr, td, txtValue;
-	  let flag=false;
-	  let err=document.getElementById("error");
-	  error.style.display="none";
-	  input = document.getElementById("nsearch");
-	  filter_text = input.value.toUpperCase();
-	  table_body = document.getElementById("table-body");
-	  tr = table_body.getElementsByTagName("tr");
+		  document.getElementById("nf").style.display="block";
+		  let input, filter_text, table_body, tr, td, txtValue;
+		  let flag=false;
+		  let err=document.getElementById("error");
+		  error.style.display="none";
+		  input = document.getElementById("nsearch");
+		  filter_text = input.value.toUpperCase();
+		  table_body = document.getElementById("table-body");
+		  tr = table_body.getElementsByTagName("tr");
 
-	  for (let i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      txtValue = td.textContent || td.innerText;
-	      if (txtValue.toUpperCase().indexOf(filter_text) > -1) {
-	      	flag=true;
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    }
-	  }
-	  if(!flag){
-	  	error.style.display="block";
-	  	 err.innerHTML='No data found';
-	  }
+		  for (let i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      txtValue = td.textContent || td.innerText;
+		      if (txtValue.toUpperCase().indexOf(filter_text) > -1) {
+		      	flag=true;
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    }
+		  }
+		  if(!flag){
+		  	error.style.display="block";
+		  	 err.innerHTML='No data found';
+		  }
 	});
+	
 	document.getElementById("nf").addEventListener("click",()=>{
 		document.getElementById("nf").style.display="none";
 		console.log("in nf");
@@ -309,19 +312,24 @@ document.addEventListener('DOMContentLoaded',()=>{
 	});
 
 
-	document.getElementById("edate").addEventListener("change",()=>{
-		document.getElementById("df").style.display="block";
 
+	document.getElementById("sdate").addEventListener("change",()=>{
+		document.getElementById("edate").min=document.getElementById("sdate").value;
+	});
+	document.getElementById("edate").addEventListener("change",()=>{
+		
 		if(!document.getElementById("sdate").value){
 	  	alert("select start date first");
 	  	document.getElementById("edate").value="";
 	  	return false;
 	  }
-
+	  
+	  document.getElementById("df").style.display="block";
 	  let sdate,edate, filter_text, table_body, tr, td, txtValue;
 	  let flag=false;
 	  let err=document.getElementById("error");
 	  error.style.display="none";
+
 	  sdate = new Date (document.getElementById("sdate").value);
 	  edate = new Date(document.getElementById("edate").value);
 		/*  console.log(sdate+" :"+typeof(sdate));
@@ -399,5 +407,64 @@ document.addEventListener('DOMContentLoaded',()=>{
 		}*/
 		showTodoList(todo_array);
 	});
+
+	function sortTableByStrings(col) {
+
+	  var table, rows, switching, i, x, y, shouldSwitch;
+	  table = document.getElementById("table-body");
+	  switching = true;
+	
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    
+	    for (i = 0; i < (rows.length-1); i++) {
+	      shouldSwitch = false;
+	      
+	      x = rows[i].getElementsByTagName("td")[col];
+	      y = rows[i + 1].getElementsByTagName("td")[col];
+	      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+	        shouldSwitch = true;
+	        break;
+	      }
+	    }
+	    if (shouldSwitch) {
+	      /* If a switch has been marked, make the switch
+	      and mark that a switch has been done: */
+	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	    }
+	  }
+	}
+
+	function sortTableByDate(col) {
+		
+	  var table, rows, switching, i, x, y, shouldSwitch;
+	  table = document.getElementById("table-body");
+	  switching = true;
+	
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    
+	    for (i = 0; i < (rows.length-1); i++) {
+	      shouldSwitch = false;
+	      
+	      x = rows[i].getElementsByTagName("td")[col];
+	      y = rows[i + 1].getElementsByTagName("td")[col];
+	      if (new Date(x.innerHTML.toLowerCase()) > new Date(y.innerHTML.toLowerCase())) {
+	        shouldSwitch = true;
+	        break;
+	      }
+	    }
+	    if (shouldSwitch) {
+	      /* If a switch has been marked, make the switch
+	      and mark that a switch has been done: */
+	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	    }
+	  }
+	}
+
 
 });
