@@ -5,7 +5,9 @@
 .userData label{
 		font-size: 25px;
 }
-
+.container{
+	position: relative;
+}
 .requiredE { 
 	color:red;
 	font-size: 18px;
@@ -27,17 +29,23 @@
 
 .profile-header{
 	/*padding: 10px;*/
-	position: relative;
+	/*position: relative;*/
 	/*margin: 25px;*/
 }
-
+.page-header{
+	display: inline-block;
+	position: absolute;
+	top: -14px;
+    left: 526px;
+	/*margin: 0 auto;*/
+}
 #user-img{
 	display: inline-block;
 	position: absolute;
 	width: 100px;
 	height: 100px;
-	top: 97px;
-	left: 526px;
+	/*top: 30px;
+	left: 526px;*/
 	border-radius: 50px;
 	border:1px solid #a8a8a7;
 }
@@ -45,8 +53,8 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    top: 158px;
-    left: 595px;
+    top: 56px;
+    left: 65px;
     opacity: 0.8;
     padding: 2px;
 }

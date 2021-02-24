@@ -57,6 +57,8 @@ window.onload = function(){
 		if(user_img)
 		{
 			document.getElementById("user-img").setAttribute("src",user_img);
+		}else{
+			
 		}
 		var ip=document.getElementsByClassName("ip-rw");
 		for(var j=0;j<ip.length;j++){

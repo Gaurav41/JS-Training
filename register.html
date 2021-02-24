@@ -14,30 +14,54 @@
 				</div>
 				<h1>Register Here</h1>
 				<form>
-					<label class="required">Username/email :</label>
-					<input id="username" type="text" name="username" placeholder="Username/email" >
-					<label class="required">First name :</label>
-					<input id="f-name" type="text" name="f-name" placeholder="First Name"  >
-					<label class="required"> Last name :</label>
-					<input id="l-name" type="text" name="l-name" placeholder="Last Name"  >
+					<div>
+						<label class="required">Username/email :</label>
+						<input id="username" type="text" name="username" placeholder="Username/email" >
+						<span class="err-msg" id="uerr"></span>
+					</div>
+					<div>
+						<label class="required">First name :</label>
+						<input id="f-name" type="text" name="f-name" placeholder="First Name"  >
+						<span class="err-msg" id="ferr"></span>
+					</div>
+					<div>
+						<label class="required"> Last name :</label>
+						<input id="l-name" type="text" name="l-name" placeholder="Last Name"  >
+						<span class="err-msg" id="lerr"></span>
+					</div>
+					
 					
 					<div id="gender" class="gender-radio" >
 						<label class="required"> Gender :</label>
-						
 							<input class="gender-radio-btn" id='m' type="radio" value="Male" name="gender"><label>Male</label>
 					    	<input class="gender-radio-btn" id="f" type="radio" value="Female" name="gender"><label>Female</label>
 					    	<input class="gender-radio-btn" id="o" type="radio" value="Other" name="gender"><label>Other</label>
+					    	<span class="err-msg" id="gerr"></span>
 					 </div>
-					<label>Address :</label>
-					<textarea id="address" type="text" name="address" placeholder="Address" ></textarea> 
-					<label class="required">Password :</label>
-					<input id="password" type="password" name="password" placeholder="Password" >
-					<label class="required">Confirm Password :</label>
-					<input id="retype-password" type="password" name="retype-password" placeholder="Retype Password" required>
-					<input type="file" id="uimg" name="profile-pic" accept="" >
+					 <div>
+					 	<label>Address :</label>
+						<textarea id="address" type="text" name="address" placeholder="Address" ></textarea> 
+					 	<span class="err-msg" id="aerr"></span>
+					 </div>
+					<div>
+						<label class="required">Password :</label>
+						<input id="password" type="password" name="password" placeholder="Password" >
+						<span class="err-msg" id="perr"></span>
+					</div>
+					<div>
+						<label class="required">Confirm Password :</label>
+						<input id="retype-password" type="password" name="retype-password" placeholder="Retype Password" required>
+						<span class="err-msg" id="cperr"></span>
+					</div>
+					
+					<div><label for="profile-pic">Profile picture:</label>
+						<input type="file" id="uimg" name="profile-pic" accept="" >
+						<span class="err-msg" id="uimgerr"></span>
+					</div>
+					
 					<div class="btn">
-						<input id="register-btn" type="button" value="Register" >
-						<input id="cancle-btn" type="reset" value="Cancel">
+						<input id="register-btn" type="button" value="Submit" >
+						<input id="cancle-btn" type="reset" value="reset">
 					</div>
 					<div>
 						<p><a href="index.html">Login here</a></p>
@@ -46,7 +70,7 @@
 				</form>
 			</div>
 		</section>
-			<script type="text/javascript" src="js/main.js"></script>
+			<script type="text/javascript" src="js/register.js"></script>
 
 
 

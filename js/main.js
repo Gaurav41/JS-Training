@@ -28,16 +28,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 		}
 		var register_btn=document.getElementById("register-btn");
 		if(register_btn){
-			register_btn.addEventListener("click", addUser);
+			register_btn.addEventListener("click", addNewUser);
 		}
 
 	});
-
-
-
-
-
-
 
 function auth_user(){
 	var uname=document.getElementById("username").value;
@@ -98,8 +92,13 @@ function User(uname,fname,lname,gender,password,address){
 	this.todos=[];
 }
 
-function addUser()
-{
+
+
+
+
+function addNewUser()
+{	
+	validate();
 	let uname=document.getElementById("username").value;
 	let fname=document.getElementById("f-name").value;
 	let lname=document.getElementById("l-name").value;
@@ -107,14 +106,16 @@ function addUser()
 	let password=document.getElementById("password").value;
 	let retype_password=document.getElementById("retype-password").value;
 	let gender;
+	/****** Validation ****/
+
 	if (document.getElementById('m').checked) {
  	 gender = document.getElementById('m').value;
 	}else if (document.getElementById('f').checked) {
  	 gender = document.getElementById('f').value;
-	}else{
+	}else if (document.getElementById('o').checked){
 		 gender = document.getElementById('o').value;
 		}
-console.log("un:"+uname+" fn:"+fname+" ln:"+lname+" add:"+address+" pass:"+password+" rp: " +retype_password+" gen:"+gender)
+	console.log("un:"+uname+" fn:"+fname+" ln:"+lname+" add:"+address+" pass:"+password+" rp: " +retype_password+" gen:"+gender)
 	
 	if(uname==""|| fname==""|| lname=="" ||gender==""|| address=="" ||password==""||retype_password=="")
 	{
