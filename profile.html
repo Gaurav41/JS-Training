@@ -24,9 +24,10 @@
 		</header>
 
 		<section >
-			<div class="profile-header heading">
-				<img src="img/login.png" id="user-img">
-				<h1>My Profile</h1>
+			<img src="img/login.png" id="user-img">
+			<a href="#" id="change-profile"><img src="img/camera.png" id="change-profile-icon"></a>
+			<div class="profile-header">
+				<h1 class="heading">My Profile</h1>
 			</div>
 			<div class="userData">
 				<div class="userData-container">
@@ -34,22 +35,22 @@
 					<div class="data-table">
 						<div class="data-row">
 							<div class="data-cell">
-								<label>First name :</label>
-								<input id="f-name" type="text" name="f-name" >
+								<label for="f-name">First name :<span class="requiredE">*</span></label>
+								<input id="f-name" class="ip-rw" type="text" name="f-name" >
 							</div>	
 							<div class="data-cell cell2">
-								<label> Last name :</label>
-								<input id="l-name" type="text" name="l-name" >
+								<label> Last name :<span class="requiredE">*</span></label>
+								<input id="l-name" class="ip-rw" type="text" name="l-name" >
 							</div>	
 						</div>
 						<div class="data-row">
 							<div class="data-cell">
 								<label>Username :</label>
-								<input id="username" type="text" name="username">
+								<input id="username" class="ip-rw" type="text" name="username">
 							</div>
 							<div class="data-cell cell2">
 									<label>Address :</label>
-									<textarea id="address" type="text" name="address" ></textarea> 
+									<textarea id="address" class="ip-rw" type="text" name="address" ></textarea> 
 								</div>
 							
 						</div>
@@ -63,7 +64,7 @@
 									  <option value="Female">Female</option>
 									  <option value="Other">Other</option>
 									</select> -->
-							<label > Gender :</label>	
+							<label > Gender :<span class="requiredE">*</span></label>	
 							<div id="gender" class="gender-radio" >
 						
 							<input class="gender-radio-btn" id='m' type="radio" value="Male" name="gender"> <span class="gender-label">Male</span>
@@ -85,7 +86,7 @@
 				</form>
 				<div class="update-info-btn " id="update-info-btn">
 							<input id="save-btn" class="p-btn" type="button" value="Save" >
-							<input id="cancle-btn" class="p-btn" type="reset" value="cancle" >
+							<input id="cancle-btn" class="p-btn" type="reset" value="Cancle" >
 
 						</div>
 				<div class="edit-info-btn" id="edit-info-btn" >

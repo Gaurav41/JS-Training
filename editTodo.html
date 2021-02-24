@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Todo</title>		
+	<title>Edit Todo</title>		
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/addTodo.css">
 
 </head>
 <body>
 	<main class="container">
-		
-		<div class="heading">
-			<h1>Edit Todo</h1>
+		<header>
+			<div class="navbar">
+				<ul>
+				<label id="logo">Todo App</label>
+				  <li><a id="logout" href="index.html">Logout</a></li>
+				  <li><a href="profile.html">Profile</a></li>
+				  <li><a href="todoList.html">List Todos</a></li>
+				  <li><a href="addTodo.html">Add Todo</a></li>
+				</ul>
+			</div>
+		</header>
+		<div >
+			<h1 class="heading">Edit Todo</h1>
 		</div>
 
 
@@ -19,18 +29,18 @@
 			<div class="form-container">
 			<form class="addtodo-forms">
 					<div id="error" class="error-msg"></div>
-					<div class="form-group">
-						<label class="main-label" for="title">Title: </label>
+					<div class="form-group ">
+						<label class="main-label required" for="title">Title: </label>
 						<input class="form-filed" id="title" type="text" name="title" placeholder="Title of todo">
 					</div>
 					<div class="form-group">
-						<label class="main-label" for="date">Date: </label>
+						<label class="main-label required" for="date">Date: </label>
 						<input class="form-filed" id="date" type="date" name="date">
 					</div>
 					<div class="form-group">
-						<label class="main-label"  for="categories">Categories: </label>
+						<label class="main-label required"  for="categories">Categories: </label>
 						<input type="checkbox" name="Company-work" class="cat" id="Company-work" value="Company-work">
-						<lable for="company-work">Company-work</lable>
+						<lable for="company-work ">Company-work</lable>
 						<input type="checkbox" name="College-work" class="cat" id="College-work" value="College-work">
 						<label for="college-work">College-work</label><br>
 						<input type="checkbox" name="Urgent" class="cat" id="Urgent" value="Urgent">
@@ -43,7 +53,7 @@
 				
 				
 				<div class="form-group">
-					<label class="main-label" for="status">Status:</label>
+					<label class="main-label required" for="status">Status:</label>
 					<input type="radio" name="status" id="mrkD" value="done">
 					<label for="mrkD">Done</label>	
 					<input type="radio" name="status" id="mrkO" value="ongoing">
@@ -59,11 +69,11 @@
 					</select>
 				</div>
 				<div class="form-group" id="reminder-date">
-					<label class="main-label" for="remD">Reminder Date:</label>
+					<label class="main-label required" for="remD">Reminder Date:</label>
 					<input class="form-filed" id="remD" type="date" name="remD" >
 				</div>
 				<div class="form-group">
-					<label class="main-label">Is public:</label>
+					<label class="main-label required">Is public:</label>
 					<input id="isPublic" type="radio" name="ispublic" value="Yes">
 					<lable for="Yes" >Yes</lable>
 					<input id="isNotPublic" type="radio" name="ispublic" value="No">

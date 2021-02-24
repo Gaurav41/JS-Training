@@ -2,10 +2,11 @@
 <html>
 <head>
 	<title>Register</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/register.css">
 </head>
 <body>
-<main>
+<main class="container">
 	<section class="register-box">
 			<div class="register-form">
 				<div class="register-img-container">
@@ -13,15 +14,15 @@
 				</div>
 				<h1>Register Here</h1>
 				<form>
-					<label>Username/email :</label>
+					<label class="required">Username/email :</label>
 					<input id="username" type="text" name="username" placeholder="Username/email" >
-					<label >First name :</label>
+					<label class="required">First name :</label>
 					<input id="f-name" type="text" name="f-name" placeholder="First Name"  >
-					<label> Last name :</label>
+					<label class="required"> Last name :</label>
 					<input id="l-name" type="text" name="l-name" placeholder="Last Name"  >
 					
 					<div id="gender" class="gender-radio" >
-						<label > Gender :</label>
+						<label class="required"> Gender :</label>
 						
 							<input class="gender-radio-btn" id='m' type="radio" value="Male" name="gender"><label>Male</label>
 					    	<input class="gender-radio-btn" id="f" type="radio" value="Female" name="gender"><label>Female</label>
@@ -29,14 +30,14 @@
 					 </div>
 					<label>Address :</label>
 					<textarea id="address" type="text" name="address" placeholder="Address" ></textarea> 
-					<label>Password :</label>
+					<label class="required">Password :</label>
 					<input id="password" type="password" name="password" placeholder="Password" >
-					<label>Confirm Password :</label>
+					<label class="required">Confirm Password :</label>
 					<input id="retype-password" type="password" name="retype-password" placeholder="Retype Password" required>
 					<input type="file" id="uimg" name="profile-pic" accept="" >
 					<div class="btn">
 						<input id="register-btn" type="button" value="Register" >
-						<input id="cancle-btn" type="reset" value="Cancle">
+						<input id="cancle-btn" type="reset" value="Cancel">
 					</div>
 					<div>
 						<p><a href="index.html">Login here</a></p>

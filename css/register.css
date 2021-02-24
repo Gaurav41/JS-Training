@@ -1,7 +1,7 @@
-body{
-	
+.container{
+	margin: 0;
+	padding: 0;
 }
-
 
 .register-box{
 	background-color: #edece8;
@@ -10,7 +10,10 @@ body{
 	width: 450px;
 	padding: 20px;
 	border: 2px solid #807c7c;
+	width:640px;
 }
+
+
 .register-img-container{
 
 	text-align: center;

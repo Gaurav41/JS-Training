@@ -5,7 +5,13 @@
 	margin: 0;
 	padding: 0;
 }
-
+a{
+  text-decoration: none;
+  color:#030bfc;
+}
+a:hover{
+  color:red;
+}
 
 /*Primary color grrn #58b85d */
 
@@ -13,18 +19,25 @@
   text-align: center;
   font-size: 
 }
-
+.table-header th{
+  font-weight: 200;
+  font-family: "Oswald",sans-serif;
+  
+}
 .table-contorls{
   position: relative;
   height:60px;
   border: 1px solid black;
   background-color: #edece8;
   padding: 10px;
+  font-family: "Poppins",sans-serif;
 }
 .filters{
   display: inline-block;
   position: relative;
   float: left;
+  margin-top: 15px;
+  margin-left: 5px;
 }
 
 .action-btns{
@@ -54,6 +67,7 @@
   color: white;
   height: 25px;
 }
+/*
 .cf{
   position: absolute;
   width: 85%;
@@ -61,12 +75,11 @@
   left: 0px;
   display: block;
   height: 25px;
-/*  border: 1px solid black;
-*/}
+}
 .cf button{
   width: 100px;
   height: 25px;
-}
+} 
  #nf{
   position: absolute;
   left: 321px;
@@ -78,16 +91,42 @@
   left: 653px;
   display: none;
   }
-#cf{
+  #cf{
  position: absolute;
   right: 30px;
   display: none;
   }
+  */
+#nfc{
+    position: absolute;
+    left: 272px;
+    display: none; 
+    top: 4px;
+}
+
+  #dfc{
+    top: 4px;
+    position: absolute;
+    left: 394px;
+    display: none;
+  }
+
+  #cfc{
+    position: absolute;
+    display: none;
+    top: 5px;
+    right: 0px;
+  }
+
+  .f-close-icon{
+    width: 20px;
+    height: 20px;
+  }
 
 .list-table-cntainer{
 
-  padding-left: 100px;
-  padding-right: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
 
 }
 
@@ -109,14 +148,14 @@
 }
 #nsearch{
      height: 28px;
-    margin-right: 20px;
+    margin-right: 25px;
     border: none;
 
 }
 .dfilter{
 
   height: 20px;
-  margin-right: 20px; 
+  margin-right: 25px; 
 
 }
 
@@ -143,6 +182,7 @@ input [ type="date"]{
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
+  display: table;
 }
 
 #list-table{

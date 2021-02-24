@@ -47,9 +47,11 @@ function generateId(){
        // console.log("length:"+users_data[index].todos.length);
         let len=users_data[index].todos.length;
         if(len==0){
-            return 0;
+                id=0;
+            return id;
         }else{
-            return users_data[index].todos[len-1].id;
+            id=users_data[index].todos[len-1].id;
+            return id+1;
         }
     
 }
@@ -172,7 +174,7 @@ function addTodo(){
 		if(users_data[index].todos.push(new_todo)){
             try{
                 localStorage.setItem("users_data",JSON.stringify(users_data));
-                alert("New Todo added successfully");
+                if(!confirm("New Todo added successfully Do you want to add more?"))
                 window.location.href="./todoList.html";
             }catch(error){
                  alert("Something went wrong \n Error:"+error);

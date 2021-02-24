@@ -93,7 +93,7 @@ if(isPublic=="Yes"){
 
 });
 
-
+    
 	function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
     this.id=id;
     this.title=title
@@ -222,5 +222,6 @@ function addTodo(){
 
 document.getElementById("cancle").addEventListener("click",()=>{
 
-window.location.href="./todo-list.html";
+window.location.href="./todoList.html";
 });
+

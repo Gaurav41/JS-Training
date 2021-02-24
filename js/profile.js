@@ -58,6 +58,11 @@ window.onload = function(){
 		{
 			document.getElementById("user-img").setAttribute("src",user_img);
 		}
+		var ip=document.getElementsByClassName("ip-rw");
+		for(var j=0;j<ip.length;j++){
+		ip[j].readOnly=true;
+		
+		}
 		updateUser(u,index,users_data);
 		
 	}
@@ -125,8 +130,19 @@ function update_form_validate(fname,lname,address,gender){
 	return true;
 }
 
+document.addEventListener("DOMContentLoaded",()=>{
+
 var edit=document.getElementById("edit-btn");
 edit.onclick=()=>{
+	var req=document.getElementsByClassName("requiredE");
+	for(var i=0;i<req.length;i++){
+		req[i].style.visibility="visible";
+	}
+	var ip=document.getElementsByClassName("ip-rw");
+		for(var j=0;j<ip.length;j++){
+		ip[j].readOnly=false;
+		
+		}
 	document.getElementById("edit-info-btn").style.display="none";
 	/*edit.style.display="none";*/
 	document.getElementById("update-info-btn").style.display="block";
@@ -134,8 +150,23 @@ edit.onclick=()=>{
 
 var cancle=document.getElementById("cancle-btn");
 cancle.onclick=()=>{
+	var ip=document.getElementsByClassName("ip-rw");
+		for(var j=0;j<ip.length;j++){
+		ip[j].readOnly=true;
+		
+		}
+	var req=document.getElementsByClassName("requiredE");
+	for(var i=0;i<req.length;i++){
+		req[i].style.visibility="hidden";
+	}
 	document.getElementById("edit-info-btn").style.display="block";
 	/*edit.style.display="block";*/
 	document.getElementById("update-info-btn").style.display="none";
 }	
+});
 
+let cp=document.getElementById("change-profile");
+
+cp.addEventListener("click",()=>{
+	cp.setAttribute("href","changeProfile.html");
+	})

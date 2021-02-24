@@ -1,5 +1,4 @@
 
-
 .container{
 	
 	margin: 0;
@@ -10,14 +9,10 @@
 
 	background-color: #edece8;
 	text-align: center;
-	
 	padding: 10px;
 
 }
-.heading{
-	text-align: center;
 
-}
 .error-msg{
 	color: red;
 	font-size: 20px;
@@ -31,6 +26,7 @@
 	padding-left: 15px;
 	height: 40px;
     width: 200px;
+    font-size: 15px;
 
 }
 
@@ -38,9 +34,10 @@ label{
 
 }
 .form-container{
-	border: 2px solid;
+	/*border: 2px solid;*/
 	width: 50%;
 	margin: 0 auto;
+	padding: 10px;
 }
 .main-label{
 	font-size: 25px;

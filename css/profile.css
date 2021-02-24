@@ -4,6 +4,14 @@
 }
 .userData label{
 		font-size: 25px;
+}
+
+.requiredE { 
+	color:red;
+	font-size: 18px;
+	vertical-align: super;
+	/*display: none;*/
+	visibility:hidden;
 
 
 }
@@ -11,37 +19,47 @@
 .userData-container{
 	background-color: #edece8;
 	margin: 30px auto;
-    width: 940px;
+    width: 1000px;
     padding: 50px;
     box-sizing:content-box;
 
 }
 
-.heading h1{
-	margin: 0px;
-	font-size: 50px;
-	text-align: center;
-
-}
 .profile-header{
-	padding: 10px;
+	/*padding: 10px;*/
 	position: relative;
-	margin: 25px;
+	/*margin: 25px;*/
 }
-.profile-header img{
+
+#user-img{
 	display: inline-block;
 	position: absolute;
-	width: 80px;
-	height: 80px;
-	top:0;
-	left: 500px;
-	border-radius: 40px;
+	width: 100px;
+	height: 100px;
+	top: 97px;
+	left: 526px;
+	border-radius: 50px;
 	border:1px solid #a8a8a7;
 }
+#change-profile-icon{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 158px;
+    left: 595px;
+    opacity: 0.8;
+    padding: 2px;
+}
+#change-profile-icon:hover{
+	opacity: 1;
+    position: absolute;
+}
+
 .data-table{
 	margin: 0 auto;
 	display: block;
 }
+
 .data-row{
 	display: inline-block;
 	margin-bottom: 25px;
@@ -52,7 +70,7 @@
 	position: relative;
 	/*border: 2px solid black;*/
 	height: 50px;
-	width: 444px;
+	width: 468px;
 	float: left;
 
 }
@@ -71,6 +89,7 @@
     height: 50px;
     padding-left: 15px;
     font-size: 18px;
+    font-weight: bold;
 
 }
 
@@ -90,11 +109,12 @@
 	font-size: 20px;	
 }
 .data-table label{
-	    margin-top: 11px;
+	margin-top: 7px;
     margin-bottom: 11px;
+    display: inline-block;
     /* top: 43px; */
-    position: absolute;
-}
+/*    position: absolute;
+*/}
 .gender-radio{
 	display: inline-block;
 	right: 50px;

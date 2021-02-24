@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 function auth_user(){
 	var uname=document.getElementById("username").value;
    var upass=document.getElementById("password").value;
+   var login_msg=document.getElementById("login_msg");
+	login_msg.style.color= 'red';
 	if(uname!=="" && upass!=="")
 	{	
 		
@@ -52,13 +54,21 @@ function auth_user(){
 			window.location.href="./profile.html";
 
 		}else{
-			alert("Invalid credentials");	
+			alert("Invalid credentials");
+			login_msg.innerHTML="";
+
 		}
 	
 	}else{		
-		var login_msg=document.getElementById("login_msg");
-		login_msg.style.color= 'red';
-		login_msg.innerHTML="Enter ID and password";
+		
+		if(uname==""){
+			login_msg.innerHTML="Enter User ID";
+			document.getElementById("username").focus();	
+		}else{
+			login_msg.innerHTML="Enter Password";
+			document.getElementById("password").focus();
+		}
+		
 	}
 }
 	

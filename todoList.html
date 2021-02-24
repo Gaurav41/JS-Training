@@ -39,12 +39,14 @@
 						</div>	
 						<div class="filters">
 								<label>Filter by name</label>
-								<input  type="text" name="nsearch" id="nsearch">	
+								<input  type="text" name="nsearch" id="nsearch">
+								<img id="nfc" class="f-close-icon" src="img/cross2.png">	
 						</div>
 						<div class="filters dfilter">	
 							<label>Filter by date</label>
 							<input type="date" class="dateFilter" name="sdate" id="sdate"><label>:</label>
 							<input type="date" class="dateFilter" name="edate" id="edate">
+							<img id="dfc" class="f-close-icon" src="img/cross2.png">
 						</div>
 						<div class="filters">
 							<label>Category</label>
@@ -56,6 +58,7 @@
 								<option value="Important">Important</option>
 								<option value="Other">Other</option>
 							</select>
+							<img id="cfc" class="f-close-icon" src="img/cross2.png">
 						</div>
 						<div class="action-btns" id="action-btns">
 							<button id="mrkD-todo">Mark as Done</button>
@@ -63,11 +66,12 @@
 							<button id="edit-todo">Edit Todo</button>
 						</div>
 					</div>
-					<div class="cf">
-						<button id="nf">clear1</button>
-						<button id="df">clear2</button>
-						<button id="cf">clear3</button>
-					</div>
+					<!-- <div class="cf">
+						<img id="nf" class="f-close-icon" src="img/cross2.png"> 
+						<img id="df" class="f-close-icon" src="img/cross2.png">
+						<img id="cf" class="f-close-icon" src="img/cross2.png">
+						
+					</div> -->
 			
 				</div>
 					<div id="error"></div>
@@ -81,8 +85,8 @@
 								<th>REMINDER</th>
 								<th>REM DATE</th>
 								<th>IS PUBLIC?</th>
-								<th>Action</th>
-								<th>Attachment</th>
+								<th>ACTION</th>
+								<th>ATTACHMENT</th>
 							</tr>
 						</thead>
 						<tbody id="table-body">
