@@ -51,7 +51,7 @@ function shwpdf(data) {
 	
 	var obj = document.createElement('object');
 	obj.style.width = '100%';
-	obj.style.height = '842pt';
+	obj.style.height = '710px';
 	obj.type = 'application/pdf';
 	obj.data = 'data:application/pdf;base64,' + data;
 	document.body.appendChild(obj);

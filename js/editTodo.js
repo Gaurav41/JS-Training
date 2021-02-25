@@ -1,16 +1,24 @@
 let id=Number(new URL(window.location.href).searchParams.get("tid"));
-LoggedInUser=localStorage.getItem('LoggedInUser');
-let	users_data = JSON.parse(localStorage.getItem('users_data'));
-	var index=-1;
-		for(var i=0;i<users_data.length;i++)
-		{		
-			if(users_data[i].uname===LoggedInUser)
-			{
-			index=i;
-			break;
-			}
-		}
-		let todos=users_data[index].todos;
+let LoggedInUser;
+let users_data ;
+let todos;
+let index;
+let categories=[];
+
+function getData(){
+    LoggedInUser=localStorage.getItem('LoggedInUser');
+     users_data = JSON.parse(localStorage.getItem('users_data'));
+    index=-1;
+        for(var i=0;i<users_data.length;i++)
+        {       
+            if(users_data[i].uname===LoggedInUser)
+            {
+            index=i;
+            break;
+            }
+        }
+         todos=users_data[index].todos;
+}
 
 function showRemDate(){
 
@@ -26,17 +34,36 @@ function showRemDate(){
 
 
 document.addEventListener("DOMContentLoaded",()=>{
+    
+let Tdate=new Date;
+    let dd=Tdate.getDate();
+    let mm=(Tdate.getMonth()+1);
+    let yyyy=Tdate.getFullYear();
+    if(dd<10){
+        dd="0"+dd;
+    }
+    if(mm<10){
+        mm="0"+mm;
+    }
 
+    let today= yyyy+'-'+mm+'-'+dd;
 
+    /*d = new Date(today)*/;
+/*    document.getElementById("date").setAttribute( "min","2021-25-02T12:00");
+*/    document.getElementById("date").min=today;
+    document.getElementById("remD").min=today;
 /*console.log(todos[0]);
 console.log(id);
 console.log(todos[0].id===id);*/
-
-let title,date,categories,status,reminder,remDate,isPublic;
+getData();
+let title,date,status,reminder,remDate,isPublic;
+let categories=[];
 for(var j=0;j<todos.length;j++)
 {
-	if(todos[j].id===id)
-	{
+    
+	if(todos[j].id==id)
+	{  
+
 		title=todos[j].title;
 		date=(todos[j].date);
 		categories=todos[j].categories;
@@ -46,7 +73,9 @@ for(var j=0;j<todos.length;j++)
 		isPublic=todos[j].isPublic;
 		console.log(date);
 		break;
-	}	
+	}else{
+       /* alert("error"+error);*/
+    }	
 }
 
 let ftitle=document.getElementById("title");
@@ -90,11 +119,10 @@ if(isPublic=="Yes"){
 }
 
 
-
 });
 
     
-	function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
+function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
     this.id=id;
     this.title=title
 	this.date=date;
@@ -111,7 +139,7 @@ function addTodo(){
 
     console.log("add todo");
 	 let error=document.getElementById("error");
-	console.log("in validate");
+	console.log("in add todo");
     let title=document.getElementById("title");
     if(title.value==="")
     {
@@ -129,7 +157,6 @@ function addTodo(){
     	return false;
     }
 
-	let categories=[];
 	let flag=false;
 	let categories_ip = document.querySelectorAll(".cat");   
         for (let i = 0; i < categories_ip.length; i++) {   
@@ -144,7 +171,7 @@ function addTodo(){
     	error.innerHTML="Please select categories";
     	error.style.display="block";
     	return false;
-    }
+        }
 
     let status;
     if(document.getElementById("mrkD").checked){
@@ -194,9 +221,9 @@ function addTodo(){
 		console.log("in update todo");
 			
 	for(var j=0;j<todos.length;j++)
-{
+    {
 	if(todos[j].id===id)
-	{
+	   {
 		todos[j].title=title.value;
 		todos[j].date=date.value;
 		todos[j].categories=categories;
@@ -205,14 +232,14 @@ function addTodo(){
 		todos[j].remDate=remdate;
 		todos[j].isPublic=isPublic;
 		break;
-	}
-}
+	   }
+    }
 		users_data[index].todos=todos;
 
             try{
                 localStorage.setItem("users_data",JSON.stringify(users_data));
-                alert("New Todo added successfully");
-                window.location.href="./todo-list.html";
+                alert("Todo edited successfully");
+                window.location.href="./todoList.html";
             }catch(error){
                  alert("Something went wrong \n Error:"+error);
             }

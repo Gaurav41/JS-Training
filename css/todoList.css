@@ -12,7 +12,26 @@ a{
 a:hover{
   color:red;
 }
-
+.notification{
+  display: inline-block;
+  position: relative;
+}
+#bell{
+   
+/*  display:none;
+*/  height: 25px;
+overflow: hidden;
+margin: 0px;
+padding: 0px;
+}
+#noti{
+    color: red;
+    vertical-align: top;
+    position: absolute;
+    top: 7px;
+    left: 36px;
+    font-size: 20px;
+}
 /*Primary color grrn #58b85d */
 
 .heading{
@@ -124,7 +143,6 @@ a:hover{
   }
 
 .list-table-cntainer{
-
   margin-left: 100px;
   margin-right: 100px;
 
@@ -181,6 +199,8 @@ input [ type="date"]{
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;
+    border: 1px solid black;
+
   font-size: 18px;
   display: table;
 }
@@ -194,6 +214,9 @@ input [ type="date"]{
   border-bottom:  1px solid #ddd;
 
 }
+#list-table:last-child{
+border-bottom: 1px solid black;
+  }
 
 #list-table th,#list-table tr:hover{
    background-color: #f1f1f1;

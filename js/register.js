@@ -1,4 +1,3 @@
-
 function User(uname,fname,lname,gender,password,address){
 	this.uname=uname;
 	this.fname=fname;
@@ -9,8 +8,14 @@ function User(uname,fname,lname,gender,password,address){
 	this.todos=[];
 }
 
-
-
+function unameAvlb(nuname){
+	let users_data = JSON.parse(localStorage.getItem('users_data'));
+	for(var i=0;i < users_data.length;i++){
+		if(users_data[i].uname==nuname)
+			return false;
+	}
+	return true;
+}
 
 document.addEventListener("DOMContentLoaded",()=>{
 
@@ -52,10 +57,18 @@ document.addEventListener("DOMContentLoaded",()=>{
 		var err=document.getElementById('uerr');
 		let regex=/^[a-zA-Z]([0-9a-zA-Z]){0,10}$/;
 		if(regex.test(uname.value))
-		{
-			err.innerHTML="";
-			isvalid=true;
-			uname.style.border="2px solid green";	
+		{	
+			if(unameAvlb(uname.value)){
+				err.innerHTML="";
+				isvalid=true;
+				uname.style.border="2px solid green";	
+			}else{
+				err.innerHTML="Username already Exits!";	
+				err.style.color="red";
+				uname.style.border="2px solid red";
+				isvalid=false;
+			}
+			
 			
 		}else{
 			isvalid=false;

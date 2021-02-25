@@ -36,7 +36,8 @@ function showActions(){
 }
 /*window.onload =showTodoList();*/
 document.addEventListener('DOMContentLoaded',()=>{
-
+	
+	
 	document.getElementById("action-btns").style.opacity=0.4;
 	document.getElementById("mrkD-todo").disabled=true;
 	document.getElementById("delete-todo").disabled=true;
@@ -175,11 +176,14 @@ document.addEventListener('DOMContentLoaded',()=>{
             	alert("Select at least One item to Mark as compelete");
             	return false;
             }else{
-            	if(confirm("are you sure to Mark done "+dindex.length+ "todos")){
+            	if(confirm("Are you sure to Mark done "+dindex.length+" todo/s")){
             		for (var j =0; j < dindex.length; j++) {
           				for(var k=0;k<todo_array.length;k++)
           				{
           					if(dindex[j]===todo_array[k].id){
+          						if(todo_array[k].status==="done"){
+          							alert("Todo : "+todo_array[k].title+" is already Marked as Done");
+          						}else
           						todo_array[k].status="done";
           					}
           				}

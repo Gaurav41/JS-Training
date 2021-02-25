@@ -17,6 +17,23 @@ function showRemDate(){
     }
 
 document.addEventListener('DOMContentLoaded',()=>{
+    let Tdate=new Date;
+    let dd=Tdate.getDate();
+    let mm=(Tdate.getMonth()+1);
+    let yyyy=Tdate.getFullYear();
+    if(dd<10){
+        dd="0"+dd;
+    }
+    if(mm<10){
+        mm="0"+mm;
+    }
+
+    let today= yyyy+'-'+mm+'-'+dd;
+
+    /*d = new Date(today)*/;
+/*    document.getElementById("date").setAttribute( "min","2021-25-02T12:00");
+*/    document.getElementById("date").min=today;
+    document.getElementById("remD").min=today;
 
 let attachment="";
     const file=document.getElementById("attachment");
@@ -171,11 +188,18 @@ function addTodo(){
 		}
 		// let u=users_data[index];
 		// u["todos"].push(new_todo);
+ 
 		if(users_data[index].todos.push(new_todo)){
             try{
                 localStorage.setItem("users_data",JSON.stringify(users_data));
                 if(!confirm("New Todo added successfully Do you want to add more?"))
-                window.location.href="./todoList.html";
+                {
+                window.location.href="./todoList.html";                    
+                }
+                else{
+                    
+                }
+
             }catch(error){
                  alert("Something went wrong \n Error:"+error);
             }

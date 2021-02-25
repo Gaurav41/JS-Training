@@ -45,7 +45,7 @@ function auth_user(){
 		{	
 			console.log("Login Successful");
 			localStorage.setItem("LoggedInUser",uname);
-			window.location.href="./profile.html";
+			window.location.href="./todolist.html";
 
 		}else{
 			alert("Invalid credentials");

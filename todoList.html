@@ -12,10 +12,15 @@
 			<div class="navbar">
 				<ul>
 				<label id="logo">Todo App</label>
+				  <li><div class="notification">
+				  		<a href="notifications.html"><img id="bell" src="img/bell1.png"><span id="noti"></span> </a>
+				  		</div>
+				  </li>
 				  <li><a id="logout" href="index.html">Logout</a></li>
 				  <li><a href="profile.html">Profile</a></li>
 				  <li><a href="todoList.html">List Todos</a></li>
 				  <li><a href="addTodo.html">Add Todo</a></li>
+				  
 				</ul>
 			</div>
 		</header>
@@ -24,7 +29,6 @@
 			<div>
 				<h1 class="heading">TODO List</h1>
 			</div>
-			
 			<div class="list-table-cntainer">
 				<div class="table-contorls">
 					<div class="sf">	
@@ -91,12 +95,16 @@
 						</thead>
 						<tbody id="table-body">
 							
-						</tbody>	
+						</tbody>
+							
 					</table>				
 			</div>
 		</section>
+
 		
 	<script type="text/javascript" src="js/todoList.js"></script>
+	<script type="text/javascript" src="js/notification.js"></script>
+
 	</main>
 </body>
 </html>
