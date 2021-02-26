@@ -53,10 +53,15 @@ let attachment="";
     const file=document.getElementById("attachment");
         if(file){
             file.addEventListener("change",function(){
-                const reader = new FileReader();
-                reader. readAsDataURL(this.files[0]);
+                const reader = new FileReader();//
+                reader. readAsDataURL(this.files[0]);//Starts reading the contents of the specified Blob, once finished, 
+                                                    //the result attribute contains a data: URL representing the file's data.
                 reader.addEventListener('load',()=>{
                     attachment=reader.result;
+                    
+                });
+                reader.addEventListener('error',()=>{
+                    alert("Opps attachment uploading failed!!!");
                     
                 });
             });

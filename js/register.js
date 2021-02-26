@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 	uname.addEventListener('change',()=>{
 		var err=document.getElementById('uerr');
-		let regex=/^[a-zA-Z]([0-9a-zA-Z]){0,10}$/;
+		let regex=/^([0-9a-zA-Z_]+)@([a-zA-Z]+)\.([a-zA-Z]+)$/;
 		if(regex.test(uname.value))
 		{	
 			if(unameAvlb(uname.value)){

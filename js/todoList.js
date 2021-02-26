@@ -1,16 +1,17 @@
-
 const LoggedInUser =localStorage.getItem("LoggedInUser");
 if(LoggedInUser=="")
 {
 	window.location.href="./index.html";
 }
 function logout(){
+	let result=confirm("Are you sure to logout");
 	
-	if(confirm("Are you sure to logout"))
+	if(result)
 	{
 		localStorage.setItem("LoggedInUser","");
 		window.location.href="./index.html";
 	}
+
 	}
 
 var logout_btn=document.getElementById("logout");
@@ -48,10 +49,29 @@ function showActions(){
         }
 
 }
+
+function showTime(){
+	var clock_time=document.getElementById("current-time");
+	setInterval(()=>{
+		var d=new Date();
+		var hrs=d.getHours();
+		clock_time.innerHTML=hrs+":"+d.getMinutes()+":"+d.getSeconds();
+	},1000)
+	let close_clck_btn=document.getElementById("close-clock");
+	close_clck_btn.addEventListener("click",()=>{
+			clearInterval();
+			document.getElementById("clock").style.display="none";
+	});
+
+
+}
+
+
 /*window.onload =showTodoList();*/
 document.addEventListener('DOMContentLoaded',()=>{
 	
-	
+	showTime();
+
 	document.getElementById("action-btns").style.opacity=0.4;
 	document.getElementById("mrkD-todo").disabled=true;
 	document.getElementById("delete-todo").disabled=true;

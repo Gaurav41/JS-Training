@@ -1,10 +1,10 @@
-
+/*
 if(localStorage.getItem('LoggedInUser')=="")
 {
 	window.location.href="./index.html";
-}
-function logout(){
-	if(confirm("Are you sure to logout"))
+}*/
+/*function logout(){
+	if()
 	{
 		localStorage.setItem("LoggedInUser","");
 		window.location.href="./index.html";
@@ -15,7 +15,7 @@ var logout_btn=document.getElementById("logout");
 if(logout_btn){
 	logout_btn.addEventListener("click", logout);
 
-}
+}*/
 
 let	users_data = JSON.parse(localStorage.getItem('users_data'));
 
@@ -87,7 +87,8 @@ let ncnt=localStorage.getItem("noti_cnt");
 if(set_cnt)
 {	
 	if(ncnt>0)
-	set_cnt.innerHTML=ncnt;
+		setTimeout(()=>{set_cnt.innerHTML=ncnt},3000);
+			
 	else
 		ncnt.style.display="none;"
 }

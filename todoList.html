@@ -16,7 +16,7 @@
 				  		<a href="notifications.html"><img id="bell" src="img/bell1.png"><span id="noti"></span> </a>
 				  		</div>
 				  </li>
-				  <li><a id="logout" href="index.html">Logout</a></li>
+				  <li><a id="logout">Logout</a></li>
 				  <li><a href="profile.html">Profile</a></li>
 				  <li><a href="todoList.html">List Todos</a></li>
 				  <li><a href="addTodo.html">Add Todo</a></li>
@@ -24,6 +24,11 @@
 				</ul>
 			</div>
 		</header>
+		<div id="clock">
+			<img id="close-clock" src="img/cross1.png">
+			<div class="c-label">Now</div>
+			<div id="current-time"></div>
+		</div>
 
 		<section class="list-cotainer">
 			<div>
@@ -80,8 +85,8 @@
 				</div>
 					<div id="error"></div>
 					<table id="list-table">
-						<thead>
-							<tr class="table-header">
+						<thead class="table-header">
+							<tr>
 								<th>TODO</th>
 								<th>DATE</th>
 								<th>CATEGORIES</th>
@@ -93,9 +98,12 @@
 								<th>ATTACHMENT</th>
 							</tr>
 						</thead>
-						<tbody id="table-body">
+						<!-- <div class="scrollable"> -->
+							<tbody id="table-body">
 							
-						</tbody>
+							</tbody>
+						<!-- </div> -->
+						
 							
 					</table>				
 			</div>
