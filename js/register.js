@@ -211,7 +211,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 			let new_user=new User(uname.value,fname.value,lname.value,gender,password.value,address.value);
 			console.log(new_user);
 			try{
+				if(!(localStorage.getItem('users_data')))
+					localStorage.setItem('users_data',"");
 				let u = JSON.parse(localStorage.getItem('users_data'));
+				
 				u.push(new_user);
 				if(user_img!=null){
 					localStorage.setItem(uname.value,user_img);
@@ -227,7 +230,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 					console.log(error);
 				}
 		}else{
-			alert('Please entre all mandatory fields');
+			alert('Please enter all mandatory fields');
 		}
 		
 
