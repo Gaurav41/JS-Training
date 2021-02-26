@@ -52,7 +52,26 @@ header{
   background-color: #edece8;
   color: #333;
 }
-
+.notification{
+  display: inline-block;
+  position: relative;
+}
+#bell{
+   
+/*  display:none;
+*/  height: 25px;
+overflow: hidden;
+margin: 0px;
+padding: 0px;
+}
+#noti{
+    color: red;
+    vertical-align: top;
+    position: absolute;
+    top: 7px;
+    left: 36px;
+    font-size: 20px;
+}
 
 .heading{
   margin: 40px 0px;

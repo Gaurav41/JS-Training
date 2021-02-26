@@ -1,3 +1,22 @@
+const LoggedInUser =localStorage.getItem("LoggedInUser");
+if(LoggedInUser=="")
+{
+	window.location.href="./index.html";
+}
+function logout(){
+	if(confirm("Are you sure to logout"))
+	{
+		localStorage.setItem("LoggedInUser","");
+		window.location.href="./index.html";
+	}
+	}
+
+var logout_btn=document.getElementById("logout");
+if(logout_btn){
+	logout_btn.addEventListener("click", logout);
+
+}
+
 	document.addEventListener("DOMContentLoaded",()=>{
 		let url=window.location.href;
 		url= new URL(url);

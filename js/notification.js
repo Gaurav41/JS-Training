@@ -1,4 +1,21 @@
 
+if(localStorage.getItem('LoggedInUser')=="")
+{
+	window.location.href="./index.html";
+}
+function logout(){
+	if(confirm("Are you sure to logout"))
+	{
+		localStorage.setItem("LoggedInUser","");
+		window.location.href="./index.html";
+	}
+	}
+
+var logout_btn=document.getElementById("logout");
+if(logout_btn){
+	logout_btn.addEventListener("click", logout);
+
+}
 
 let	users_data = JSON.parse(localStorage.getItem('users_data'));
 
@@ -67,10 +84,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 let set_cnt=document.getElementById("noti");
 let ncnt=localStorage.getItem("noti_cnt");
-if(set_cnt &&ncnt>0)
-{
+if(set_cnt)
+{	
+	if(ncnt>0)
 	set_cnt.innerHTML=ncnt;
-}else{
-	ncnt.style.display="none;"
+	else
+		ncnt.style.display="none;"
 }
 });

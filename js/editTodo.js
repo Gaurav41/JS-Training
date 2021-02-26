@@ -1,12 +1,34 @@
+const LoggedInUser =localStorage.getItem("LoggedInUser");
+if(LoggedInUser=="")
+{
+    window.location.href="./index.html";
+}
+function logout(){
+    if(confirm("Are you sure to logout"))
+    {
+        localStorage.setItem("LoggedInUser","");
+        window.location.href="./index.html";
+    }
+    }
+
+var logout_btn=document.getElementById("logout");
+if(logout_btn){
+    logout_btn.addEventListener("click", logout);
+
+}
+
+
+
+
+
 let id=Number(new URL(window.location.href).searchParams.get("tid"));
-let LoggedInUser;
 let users_data ;
 let todos;
 let index;
 let categories=[];
 
 function getData(){
-    LoggedInUser=localStorage.getItem('LoggedInUser');
+    
      users_data = JSON.parse(localStorage.getItem('users_data'));
     index=-1;
         for(var i=0;i<users_data.length;i++)

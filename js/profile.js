@@ -4,25 +4,27 @@ if(LoggedInUser=="")
 {
 	window.location.href="./index.html";
 }
+function logout(){
+	if(confirm("Are you sure to logout"))
+	{
+		localStorage.setItem("LoggedInUser","");
+		window.location.href="./index.html";
+	}
+	
+	}
 
 var logout_btn=document.getElementById("logout");
 if(logout_btn){
-
-	logout_btn.addEventListener("click", function(){
-	alert("logout")
-	localStorage.setItem("LoggedInUser","");
-
-});
+	logout_btn.addEventListener("click", logout);
 
 }
 
-window.onload = function(){
-	var LoggedInUser=localStorage.getItem("LoggedInUser");
-	if(LoggedInUser)
-	{
-		/*alert("Hi "+LoggedInUser);*/
-		/*var u=getUserData(LoggedInUser);*/
 
+window.onload = function(){
+	
+	/*if(localStorage.getItem("LoggedInUser");)
+	{*/
+		
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
 
 		console.log("in getdata");
@@ -67,7 +69,7 @@ window.onload = function(){
 		}
 		updateUser(u,index,users_data);
 		
-	}
+	/*}*/
 }
 
 function updateUser(u,index,users_data){
@@ -99,7 +101,7 @@ function updateUser(u,index,users_data){
 			{
 				alert(error);
 			}
-			alert("Data Saved Successfully");
+			alert("Profile Saved Successfully");
 			document.getElementById("edit-info-btn").style.display="block";
 			document.getElementById("update-info-btn").style.display="none";
 			}
