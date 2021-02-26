@@ -170,5 +170,32 @@ cancle.onclick=()=>{
 let cp=document.getElementById("change-profile");
 
 cp.addEventListener("click",()=>{
-	cp.setAttribute("href","changeProfile.html");
-	})
+
+	let cps=document.getElementById("upload-img-container");
+	cps.style.display="block";
+	
+	let user_img;
+	let new_pic=document.getElementById("new-profile-img");
+		if(new_pic){
+			new_pic.addEventListener("change",function(){
+				const reader = new FileReader();
+				reader.	readAsDataURL(this.files[0]);
+				reader.addEventListener('load',()=>{
+					user_img=reader.result;
+			
+				});
+			});
+			let upld_btn =document.getElementById("upld_btn");
+			upld_btn.addEventListener("click",()=>{
+				localStorage.setItem(localStorage.getItem("LoggedInUser"),user_img);
+				alert("Profile picture uploaded");
+				cps.style.display="none";
+				document.getElementById("user-img").setAttribute("src",user_img);
+
+			});
+
+		}
+
+});
+
+

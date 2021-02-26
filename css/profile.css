@@ -188,3 +188,33 @@
 	width: 120px;
 	color: white;
 }
+
+
+.upload-img-container{
+	margin: 0 auto;
+	border: 2px solid black;
+	width: 450px;
+	/*height: 80px;*/
+	text-align: center;
+	padding: 5px;
+	box-sizing: content-box;
+	display: none;
+	/*position: absolute;
+	top:50%;
+	left: 35%;*/
+}
+
+.upload-pic{
+	text-align: center;
+	margin-top:15px;
+}
+
+.upload-img-container button{
+	margin-top: 10px;
+	width: 150px;
+	height: 40px; 
+	font-size: 20px;
+	background-color: #58b85d;
+}
+
+s

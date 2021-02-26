@@ -1,0 +1,14 @@
+.uplod-img-container{
+	margin: 0 auto;
+	border: 2px solid black;
+	width: 450px;
+	height: 50px;
+	text-align: center;
+
+	/*display: none;*/
+}
+
+.upload-pic{
+	text-align: center;
+	margin-top:15px;
+}
