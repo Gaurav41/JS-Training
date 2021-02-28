@@ -1,10 +1,4 @@
-if(!localStorage.getItem('users_data'))
-	{		
-			localStorage.setItem('users_data', JSON.stringify([]));
 
-	}
-
-let user_img;
 
 document.addEventListener("DOMContentLoaded",()=>{
 		const img_input=document.getElementById("uimg");
@@ -26,15 +20,15 @@ document.addEventListener("DOMContentLoaded",()=>{
 		if(login_btn){
 			login_btn.addEventListener("click", auth_user);
 		}
-		var register_btn=document.getElementById("register-btn");
+		/*var register_btn=document.getElementById("register-btn");
 		if(register_btn){
 			register_btn.addEventListener("click", addNewUser);
-		}
+		}*/
 
 	});
 
 function auth_user(){
-	var uname=document.getElementById("username").value;
+   var uname=document.getElementById("username").value;
    var upass=document.getElementById("password").value;
    var login_msg=document.getElementById("login_msg");
 	login_msg.style.color= 'red';
@@ -48,8 +42,8 @@ function auth_user(){
 			window.location.href="./todolist.html";
 
 		}else{
-			alert("Invalid credentials");
-			login_msg.innerHTML="";
+/*			alert("Invalid credentials");
+*/			login_msg.innerHTML="";
 
 		}
 	
@@ -68,21 +62,29 @@ function auth_user(){
 	
 function isAuthenticated(uname,pass)
 {	
-	let u = JSON.parse(localStorage.getItem('users_data'));
-	console.log(u);
-	for(let i=0;i<u.length;i++)
-	{
-			console.log("uname:"+ u[i].uname+ " pass:"+u[i].password);		
-		if(u[i].uname===uname && u[i].password===pass)
+	if(localStorage.getItem('users_data')){
+		let u = JSON.parse(localStorage.getItem('users_data'));
+		console.log(u);
+		for(let i=0;i<u.length;i++)
 		{
-		return true;
+				console.log("uname:"+ u[i].uname+ " pass:"+u[i].password);		
+			if(u[i].uname===uname && u[i].password===pass)
+			{
+			return true;
+			}
 		}
+		alert("Invalid credentials");
+		return false;
+	}else{
+		alert(" OOPS... NO DATABASE EXIST !!! ( Register first )");
+		return false;
 	}
-	return false;
+	
+	
 
 }
 
-function User(uname,fname,lname,gender,password,address){
+/*function User(uname,fname,lname,gender,password,address){
 	this.uname=uname;
 	this.fname=fname;
 	this.lname=lname;
@@ -90,13 +92,9 @@ function User(uname,fname,lname,gender,password,address){
 	this.password=password;
 	this.address=address;
 	this.todos=[];
-}
+}*/
 
-
-
-
-
-function addNewUser()
+/*function addNewUser()
 {	
 	validate();
 	let uname=document.getElementById("username").value;
@@ -106,7 +104,7 @@ function addNewUser()
 	let password=document.getElementById("password").value;
 	let retype_password=document.getElementById("retype-password").value;
 	let gender;
-	/****** Validation ****/
+	
 
 	if (document.getElementById('m').checked) {
  	 gender = document.getElementById('m').value;
@@ -145,10 +143,5 @@ function addNewUser()
 	}	
 
 
-}
-
-
-
-
-/***********************Profile page*******************************/
+}*/
 

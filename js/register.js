@@ -1,3 +1,5 @@
+if(!(localStorage.getItem('users_data')))
+		localStorage.setItem('users_data',JSON.stringify([]));
 function User(uname,fname,lname,gender,password,address){
 	this.uname=uname;
 	this.fname=fname;
@@ -9,17 +11,31 @@ function User(uname,fname,lname,gender,password,address){
 }
 
 function unameAvlb(nuname){
-	let users_data = JSON.parse(localStorage.getItem('users_data'));
-	for(var i=0;i < users_data.length;i++){
+	let users_data=localStorage.getItem('users_data');
+	if(users_data){
+		users_data = JSON.parse(users_data);
+	} 
+	if(users_data){
+		for(var i=0;i < users_data.length;i++){
 		if(users_data[i].uname==nuname)
 			return false;
+		}	
 	}
+	
 	return true;
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-	let isvalid =false;
+	
+
+	let isUnameValid =false;
+	let isFnameValid =false;
+	let isLnameValid =false;
+	let isGenderValid =false;
+	let isAddressValid =false;
+	let isPassValid =false;
+	let isRPassValid =false;
 	let uname=document.getElementById("username");
 	let fname=document.getElementById("f-name");
 	let lname=document.getElementById("l-name");
@@ -53,128 +69,204 @@ document.addEventListener("DOMContentLoaded",()=>{
 		}
 	});*/
 
-	uname.addEventListener('change',()=>{
+	uname.addEventListener('change',checkUname);
+	function checkUname(){
+		var username=uname.value;
 		var err=document.getElementById('uerr');
-		let regex=/^([0-9a-zA-Z_]+)@([a-zA-Z]+)\.([a-zA-Z]+)$/;
-		if(regex.test(uname.value))
+		err.innerHTML="";
+		if(username==null|| username.trim()==""){
+			err.innerHTML="Enter email address!";	
+			err.style.color="red";
+			uname.style.border="2px solid red";
+			uname.focus();
+			return false;
+		}
+		let regex=/^([0-9a-zA-Z\_\-\.]+)@([a-zA-Z\.]+)\.([a-zA-Z]+)$/;
+		if(regex.test(username))
 		{	
-			if(unameAvlb(uname.value)){
+			if(unameAvlb(username)){
 				err.innerHTML="";
-				isvalid=true;
-				uname.style.border="2px solid green";	
+				isUnameValid=true;
+				uname.style.border="2px solid green";
+				console.log("uname available");	
+				return true;
 			}else{
 				err.innerHTML="Username already Exits!";	
 				err.style.color="red";
 				uname.style.border="2px solid red";
-				isvalid=false;
-			}
-			
-			
+				isUnameValid=false;
+				console.log("Username already Exits");
+				return false;	
+			}		
 		}else{
-			isvalid=false;
+			isUnameValid=false;
 			err.innerHTML="Invalid username !";	
 			err.style.color="red";
 			uname.style.border="2px solid red";
+			return false;
 		}
-	});
+    }
+		
+
 
 	/*/^[0-9]{10})/*/
-	fname.addEventListener('change',()=>{
+	fname.addEventListener('change',checkFname);
+	function checkFname(){
+
 		var err=document.getElementById('ferr');
-		let regex=/^^[a-zA-Z]([a-zA-Z]){0,10}$/;
-		if(regex.test(fname.value))
-		{
+		err.innerHTML="";
+		if(fname.value==""||fname.value==null){
 			
-			err.innerHTML="";
-			isvalid=true;	
-			fname.style.border="2px solid green";	
-			
-		}else{
-			isvalid=false;
-			err.innerHTML="Invalid first name!";
+			err.innerHTML="Enter First Name";
 			err.style.color="red";
 			fname.style.border="2px solid red";	
+			fname.focus();
+			return false;
 		}
+		let regex=/^[a-zA-Z]([a-zA-Z]){3,50}$/;
+		if(regex.test(fname.value))
+		{	
+			err.innerHTML="";
+			isFnameValid=true;	
+			fname.style.border="2px solid green";
+			return true;		
+		}else {
+				isFnameValid=false;
+				err.innerHTML="Invalid first name! Should contain only Alphabates & length =4 or more";
+				err.style.color="red";
+				fname.style.border="2px solid red";	
+				return true;
+				}
 
+	}
 
-	});
-	lname.addEventListener('change',()=>{
+	lname.addEventListener('change',checkLname);
+	function checkLname(){
 		var err=document.getElementById('lerr');
-		let regex=/^[a-zA-Z]([a-zA-Z]){0,10}$/;
+
+		if(lname.value==""||lname.value==null){
+			err.innerHTML="Enter Last Name";
+			err.style.color="red";
+			lname.style.border="2px solid red";	
+			lname.focus();
+			return false;
+		}
+		let regex=/^[a-zA-Z]([a-zA-Z]){3,50}$/;
 		if(regex.test(lname.value))
 		{
 			err.innerHTML="";	
-			isvalid=true;
+			isLnameValid=true;
 			lname.style.border="2px solid green";
+			return true;
+		}else {
+					isLnameValid=false;
+					err.innerHTML="Invalid first name! Should contain only Alphabates & length =4 or more";
+					err.style.color="red";
+					lname.style.border="2px solid red";	
+					return false;
+				}
+
+	}
+
+	/*address.addEventListener('change',()=>{
+		let add=address.value;
+		if (add.trim()=="") {
+			isAddressValid=true;
 		}else{
-			isvalid=false;
-			err.innerHTML="Invalid last name!";
-			err.style.color="red";
-			lname.style.border="2px solid red";	
+			var err=document.getElementById('aerr');
+			err.innerHTML="";
+			let regex=/([0-9a-zA-Z\_\-\.\,]+){3,50}$/;
+			if(regex.test(add))
+			{	
+				
+					err.innerHTML="";
+					isAddressValid=true;
+					uname.style.border="2px solid green";
+						
+				
+			}else{
+				isAddressValid=false;
+				err.innerHTML="Invalid username !";	
+				err.style.color="red";
+				uname.style.border="2px solid red";
+			}
+
 		}
+	});*/
 
-	});
-
-	address.addEventListener('change',()=>{
-	});
-
-	password.addEventListener('change',()=>{
+	password.addEventListener('change',checkPass)
+	function checkPass(){
 		var err=document.getElementById('perr');
 		err.style.color="red";
+		if(password.value==""||password.value==null){
+			err.innerHTML="Enter Password";
+			password.style.border="2px solid red";
+			return false;
+		}
 		let pass=password.value;
 		if(pass.length<8){
 			err.innerHTML="Password lenght must be greater than 8!";
 			password.style.border="2px solid red";
-			isvalid=false;
+			isPassValid=false;
 		}else if(pass.search(/[0-9]/)==-1){
-			isvalid=false;	
+			isPassValid=false;	
 			err.innerHTML="Password must contain at least one digit";
 			retype_password.style.border="2px solid red";
 		}else if(pass.search(/[a-z]/)==-1){
-			isvalid=false;
+			isPassValid=false;
 			err.innerHTML="Password must contain at least one small letter";
 			password.style.border="2px solid red";
 		}else if(pass.search(/[A-Z]/)==-1){
-			isvalid=false;
+			isPassValid=false;
 			err.innerHTML="Password must contain at least one uppercase letter";
 			password.style.border="2px solid red";
 		}else if(pass.search(/[\!\@\#\$\%]/)==-1){
-			isvalid=false;
+			isPassValid=false;
 			err.innerHTML="Must contain at least one special character(!,@,#,$,%)";
 			password.style.border="2px solid red";
+
 		}
 		else{
 			err.style.color="green";
 			err.innerHTML="valid";	
-			isvalid=true;
+			isPassValid=true;
 			password.style.border="2px solid green";
+			return true;
 		}
+		return false;
 
-	});
+	}
 
-	retype_password.addEventListener('change',()=>{
+	retype_password.addEventListener('change',checkRPass);
+	function checkRPass(){
 		var err=document.getElementById('cperr');
-
+		
+		if(retype_password.value==""||retype_password.value==null){
+			alert("Retype Password");
+			return false;
+		}
 		let pass=password.value;
 		let cpass=retype_password.value;
 		if(pass===cpass){
-			isvalid=true;
+			isRPassValid=true;
 			err.innerHTML="Password matched!";
 			err.style.color="green";
 			retype_password.style.border="2px solid green";
 			password.style.border="2px solid green";
+			return true;
 		}
 		else{
-			isvalid=false;
+			isRPassValid=false;
 			err.innerHTML="Password not matched!";
 			err.style.color="red";
 			retype_password.style.border="2px solid red";
 			password.style.border="2px solid red";
+			return false;
 
 
 		}
 
-	});
+	}
 
 	let user_img;
 	const img_input=document.getElementById("uimg");
@@ -198,9 +290,24 @@ document.addEventListener("DOMContentLoaded",()=>{
 	let submit=document.getElementById("register-btn");
 	submit.addEventListener('click',(e)=>{
 		e.preventDefault();
-		if(isvalid){
-			let gender;
-	
+
+		if(!checkUname()){
+			alert("Enter valid username");
+			return false;
+		}
+				
+
+		if(!checkFname()){
+			alert("Enter valid First Name");
+			return false;
+		}
+
+
+		if(!checkLname()){
+			alert("Enter valid Last Name");
+			return false;
+		}
+		let gender="";
 			if (document.getElementById('m').checked) {
 		 	 gender = document.getElementById('m').value;
 			}else if (document.getElementById('f').checked) {
@@ -208,33 +315,49 @@ document.addEventListener("DOMContentLoaded",()=>{
 			}else if (document.getElementById('o').checked){
 				 gender = document.getElementById('o').value;
 			}
-			let new_user=new User(uname.value,fname.value,lname.value,gender,password.value,address.value);
-			console.log(new_user);
-			try{
-				if(!(localStorage.getItem('users_data')))
-					localStorage.setItem('users_data',"");
-				let u = JSON.parse(localStorage.getItem('users_data'));
-				
-				u.push(new_user);
-				if(user_img!=null){
-					localStorage.setItem(uname.value,user_img);
-				}
-				
-
-				localStorage.setItem("users_data",JSON.stringify(u));
-				alert("Registration Successful..Kindly login");
-				window.location.href="./index.html";
-
-				}catch(error)
-				{
-					console.log(error);
-				}
-		}else{
-			alert('Please enter all mandatory fields');
+		if (gender=="") {
+			alert("Please select gender");
+			return false;
 		}
+
+		if(!checkPass()){
+			alert("Enter valid Password");
+			return false;
+		}
+
+		if(!checkRPass()){
+			alert("Password Unmattached");
+			return false;
+		}
+
+			
+
+			
+		let new_user=new User(uname.value,fname.value,lname.value,gender,password.value,address.value);
+		console.log(new_user);
+		try{
+				
+			let u = JSON.parse(localStorage.getItem('users_data'));
+				
+			u.push(new_user);
+			if(user_img!=null){
+				localStorage.setItem(uname.value,user_img);
+			}
+				
+
+			localStorage.setItem("users_data",JSON.stringify(u));
+			alert("Registration Successful..Kindly login");
+			window.location.href="./index.html";
+			}catch(error)
+			{
+				console.log(error);
+			}		
+		
 		
 
 	});
+
+
 	let reset=document.getElementById("cancle-btn");
 	reset.addEventListener('click',(e)=>{
 		

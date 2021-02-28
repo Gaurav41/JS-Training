@@ -19,26 +19,29 @@ if(logout_btn){
 
 }
 
-
-window.onload = function(){
-	
-	/*if(localStorage.getItem("LoggedInUser");)
-	{*/
-		
-		let users_data = JSON.parse(localStorage.getItem('users_data'));
-
-		console.log("in getdata");
-		var index=-1;
-		for(let i=0;i<users_data.length;i++)
+let allUsersData = JSON.parse(localStorage.getItem('users_data'));
+var index=-1;
+		for(let i=0;i<allUsersData.length;i++)
 		{		
-			if(users_data[i].uname===LoggedInUser)
+			if(allUsersData[i].uname===LoggedInUser)
 			{
 			index=i;
 			break;
 			}
 		}
-		let u=users_data[index];
+		let u=allUsersData[index];
 		console.log(u);
+
+
+
+window.onload = loadData();
+function loadData(){
+	
+	/*if(localStorage.getItem("LoggedInUser");)
+	{*/
+		
+
+		console.log("in getdata");
 		document.getElementById("f-name").value=u.fname;
 		document.getElementById("l-name").value=u.lname;
 		document.getElementById("username").value=u.uname;
@@ -62,77 +65,129 @@ window.onload = function(){
 		}else{
 			
 		}
-		var ip=document.getElementsByClassName("ip-rw");
+		/*var ip=document.getElementsByClassName("ip-rw");
 		for(var j=0;j<ip.length;j++){
 		ip[j].readOnly=true;
 		
-		}
-		updateUser(u,index,users_data);
-		
+		}*/
+		var x = document.getElementsByTagName("input");
+	    for ( var counter = 0; counter < x.length; counter++)
+	    {
+	       x[counter].disabled = "true";
+	    }
+
+	    document.getElementById('address').disabled=true;
+		document.getElementById('m').disabled=true;
+		document.getElementById('f').disabled=true;
+		document.getElementById('o').disabled=true;
+/*		updateUser(u,index,users_data);
+*/		
 	/*}*/
 }
+let	err=document.getElementById("error");
+	err.innerHTML="";
+	err.style.display="none";
 
-function updateUser(u,index,users_data){
-		var save=document.getElementById("save-btn");
-		save.onclick=()=>{
+let fname=document.getElementById("f-name");
+fname.addEventListener('change',()=>{
+
+	if(fname.value=="")
+	{
+		/*alert("Enter first name");*/
+		err.innerHTML="Enter first name";
+		err.style.display="block";
+		fname.focus();
+
+		return false;
+
+	}else{
+		let regex=/^[a-zA-Z]([a-zA-Z]){3,50}$/;
+		if(regex.test(fname.value))
+		{	
+			err.innerHTML="Valid name";
+			err.style.display="none";
+		}else {
+				err.innerHTML="Invalid first name! Should contain only Alphabates & length =4 or more";
+				err.style.display="block";
+				fname.focus();
+				return false;
+				}
+	}
+});
+
+let lname=document.getElementById("l-name");
+lname.addEventListener("change",()=>{
+	if(lname.value=="")
+	{
+		/*alert("Enter first name");*/
+		err.innerHTML="Enter last name";
+		err.style.display="block";
+		lname.focus();
+
+		return false;
+
+	}else{
+		let regex=/^[a-zA-Z]([a-zA-Z]){3,50}$/;
+		if(regex.test(lname.value))
+		{	
+			err.innerHTML="Valid name";
+			err.style.display="none";
+		}else {
+				err.innerHTML="Invalid last name! Should contain only Alphabates & length =4 or more";
+				err.style.display="block";
+				lname.focus();
+				return false;
+				}
+	}
+});
+
+
+var save=document.getElementById("save-btn");
+save.addEventListener("click",()=>{
 			
 			fname=document.getElementById("f-name");
 			lname=document.getElementById("l-name");
 			address=document.getElementById("address");
-			var gender;
+			let gender="";
 			if (document.getElementById('m').checked) {
  	 			gender = document.getElementById('m').value;
 			}else if (document.getElementById('f').checked) {
  				gender = document.getElementById('f').value;
-				}else{
+				}else if (document.getElementById('o').checked){
 				gender = document.getElementById('o').value;
 			}
-
-			if(update_form_validate(fname,lname,address))
+			if(gender=="")
 			{
+				err.innerHTML="Select Gender";
+				c
+				return false;	
+			}else{
+				err.style.display="none";
+			}
+			
+			if(u.fname==fname.value && u.lname==lname.value && u.address==address.value && u.gender==gender){
+				alert("Nothing to update");
+				return false;
+			}
 			u.fname=fname.value;
 			u.lname=lname.value;
 			u.address=address.value;
 			u.gender=gender;
-			users_data[index]=u;
+			allUsersData[index]=u;
 			try{
-				localStorage.setItem("users_data",JSON.stringify(users_data));
+				localStorage.setItem("users_data",JSON.stringify(allUsersData));
 			}catch(error)
 			{
 				alert(error);
 			}
-			alert("Profile Saved Successfully");
+			alert("Profile Updated Successfully");
+			loadData();
 			document.getElementById("edit-info-btn").style.display="block";
 			document.getElementById("update-info-btn").style.display="none";
-			}
-	}
-}
+			
+	});
 
-function update_form_validate(fname,lname,address,gender){
 
-	if(fname.value=="")
-	{
-		alert("Enter first name");
-		fname.focus();
-		return false;
-
-	}
-	if(lname.value=="")
-	{
-		alert("Enter last name");
-		lname.focus();
-		return false;
-
-	}
-	if(address.value=="")
-	{
-		alert("Enter address");
-		address.focus();
-		return false;
-
-	}
-	return true;
-}
 
 document.addEventListener("DOMContentLoaded",()=>{
 
@@ -142,23 +197,30 @@ edit.onclick=()=>{
 	for(var i=0;i<req.length;i++){
 		req[i].style.visibility="visible";
 	}
-	var ip=document.getElementsByClassName("ip-rw");
-		for(var j=0;j<ip.length;j++){
-		ip[j].readOnly=false;
-		
-		}
+	
+	document.getElementById('address').disabled=false;	
+	document.getElementById('m').disabled=false;
+	document.getElementById('f').disabled=false;
+	document.getElementById('o').disabled=false;
 	document.getElementById("edit-info-btn").style.display="none";
+
 	/*edit.style.display="none";*/
 	document.getElementById("update-info-btn").style.display="block";
+	document.getElementById("save-btn").disabled=false;
+	document.getElementById("cancle-btn").disabled=false;
+	var ip=document.getElementsByClassName("ip-rw");
+		for(var j=0;j<ip.length;j++){
+		ip[j].disabled=false;
+		}
+	let username=document.getElementById("username");
+		username.readOnly=true;
+		username.disabled=true;
+
 }	
 
 var cancle=document.getElementById("cancle-btn");
 cancle.onclick=()=>{
-	var ip=document.getElementsByClassName("ip-rw");
-		for(var j=0;j<ip.length;j++){
-		ip[j].readOnly=true;
-		
-		}
+	loadData();
 	var req=document.getElementsByClassName("requiredE");
 	for(var i=0;i<req.length;i++){
 		req[i].style.visibility="hidden";

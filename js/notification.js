@@ -84,12 +84,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 let set_cnt=document.getElementById("noti");
 let ncnt=localStorage.getItem("noti_cnt");
-if(set_cnt)
+if(set_cnt && ncnt)
 {	
 	if(ncnt>0)
 		setTimeout(()=>{set_cnt.innerHTML=ncnt},3000);
 			
 	else
-		ncnt.style.display="none;"
+		set_cnt.style.display="none";
 }
 });
