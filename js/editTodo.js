@@ -155,7 +155,7 @@ function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
 	this.isPublic=isPublic;
 }
 
-document.getElementById("save").addEventListener("click",addTodo);
+/*document.getElementById("save").addEventListener("click",addTodo);
 
 function addTodo(){
 
@@ -237,25 +237,205 @@ function addTodo(){
      	return false;
    	}
 
+
+
+
+*/
+
+
+function validateTitle(){
+    let title=document.getElementById("title");
+    let regex=/^([a-zA-Z\_\-\.]+)([a-zA-Z0-9\s\_\-\.]+)$/;
+    if(title.value==null||title.value.trim()=="")
+    {
+        error.innerHTML="Please enter todo title";
+        error.style.display="block";
+        title.focus();
+        return false;
+    }else if(!regex.test(title.value))
+        {   
+                       
+            error.innerHTML="Invalid title (title should start with alphabate) !"; 
+            error.style.display="block";
+            return false;
+        }else{
+             error.style.display="none";
+             return true;
+
+        }
+    
+}
+
+function validateDate(){
+    let date=document.getElementById("date");
+    if(date.value=="" ||date.value=="Invalid Date")
+    {
+        error.innerHTML="Please select a date";
+        error.style.display="block";
+        date.focus();
+        return false;
+    }else
+        error.style.display="none";
+        return true;
+
+
+}
+
+function validateCategories(){
+    
+    let flag=false;
+    let categories_ip = document.querySelectorAll(".cat");   
+        for (let i = 0; i < categories_ip.length; i++) {   
+            if(categories_ip[i].checked == true)
+            {
+                flag=true; 
+                break;           
+            }
+               
+        }
+        if(!flag){
+            error.innerHTML="Please select categories";
+            error.style.display="block";
+            return false;
+        }else error.style.display="none";
+        return true;
+
+
+}
+
+function validateStatus(){
+    let status="";
+    if(document.getElementById("mrkD").checked){
+        status=document.getElementById("mrkD").value;
+        error.style.display="none";
+    }else if(document.getElementById("mrkO").checked){
+        status=document.getElementById("mrkO").value;
+        error.style.display="none";
+    }else if(document.getElementById("mrkN").checked){
+        status=document.getElementById("mrkN").value;
+        error.style.display="none";
+    }else{
+        error.innerHTML="Please select status";
+        error.style.display="block";
+        return false;
+    }
+    return true;
+
+
+}
+
+function validateRmDate(){
+    var rmdate=document.getElementById("remD");  
+     if(rmdate.value=="" ||rmdate.value.trim()==""){
+        error.innerHTML="Please select a reminder date";
+        error.style.display="block";
+        rmdate.focus();
+        return false;
+     }
+     else{
+         error.style.display="none";
+        return true;
+
+     }
+
+} 
+function validateIsPublic(){
+    let isPublic;
+   if(document.getElementById("isPublic").checked){
+        isPublic=document.getElementById("isPublic").value;
+        error.style.display="none";
+
+    }
+    else if(document.getElementById("isNotPublic").checked){
+                isPublic=document.getElementById("isNotPublic").value;
+                error.style.display="none";
+
+    }else {
+        error.innerHTML="Please select isPublic option";
+        error.style.display="block";
+        return false;
+    }
+    return true;
+
+
+} 
+
+document.getElementById("save").addEventListener("click",addTodo);
+
+function addTodo(){
+
+    console.log("add todo");
+    let error=document.getElementById("error");
+    console.log("in validate");
+    
+    let select=document.getElementById("reminder");
+    let reminderStatus=select.options[select.selectedIndex].value;
+    console.log(reminderStatus);
+    let remdate=document.getElementById("remD");  
+
+    if(reminderStatus=="Yes")
+    {
+        if (validateRmDate()) {
+            remdate=remdate.value;
+        }else{
+            return false;
+        }
+        
+    }else{
+        remdate="NA";
+    }
+    
+        let users_data = JSON.parse(localStorage.getItem('users_data'));
+        console.log("in addNewTodo");
+        var index=-1;
+        for(let i=0;i<users_data.length;i++)
+        {       
+            if(users_data[i].uname===LoggedInUser)
+            {
+            index=i;
+            break;
+            }
+        }
+        // let u=users_data[index];
+        // u["todos"].push(new_todo);
+    if(validateTitle()&&validateDate() && validateCategories() && validateStatus() && validateIsPublic())
+    {
+        let categories=[];
+        let categories_ip = document.querySelectorAll(".cat");   
+        for (let i = 0; i < categories_ip.length; i++) {   
+            if(categories_ip[i].checked == true)
+            {
+                categories.push(categories_ip[i].value);
+                           
+            }
+        }
+        
+        if(document.getElementById("isPublic").checked){
+        isPublic=document.getElementById("isPublic").value;
+        }
+        else {
+                isPublic=document.getElementById("isNotPublic").value;
+              }
+
 		let new_todo=new Todo(id,title.value,date.value,categories,status,reminderStatus,remdate,isPublic);
 
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
 		console.log("in update todo");
 			
-	for(var j=0;j<todos.length;j++)
-    {
-	if(todos[j].id===id)
-	   {
-		todos[j].title=title.value;
-		todos[j].date=date.value;
-		todos[j].categories=categories;
-		todos[j].status=status;
-		todos[j].reminder=reminderStatus;
-		todos[j].remDate=remdate;
-		todos[j].isPublic=isPublic;
-		break;
-	   }
-    }
+    	for(var j=0;j<todos.length;j++)
+        {
+    	if(todos[j].id===id)
+    	   {
+    		todos[j].title=title.value;
+    		todos[j].date=date.value;
+    		todos[j].categories=categories;
+    		todos[j].status=status;
+    		todos[j].reminder=reminderStatus;
+    		todos[j].remDate=remdate;
+    		todos[j].isPublic=isPublic;
+    		break;
+    	   }
+        }
 		users_data[index].todos=todos;
 
             try{
@@ -264,7 +444,11 @@ function addTodo(){
                 window.location.href="./todoList.html";
             }catch(error){
                  alert("Something went wrong \n Error:"+error);
-            }
+           }
+    }else{
+        //alert("Some thing went wrong");
+        return false;
+    }
 }
 
 
