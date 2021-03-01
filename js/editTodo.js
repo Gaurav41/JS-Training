@@ -304,7 +304,7 @@ function validateCategories(){
 }
 
 function validateStatus(){
-    let status="";
+    var status="";
     if(document.getElementById("mrkD").checked){
         status=document.getElementById("mrkD").value;
         error.style.display="none";
@@ -384,7 +384,17 @@ function addTodo(){
     }else{
         remdate="NA";
     }
-    
+    var status="";
+    if(document.getElementById("mrkD").checked){
+        status=document.getElementById("mrkD").value;
+        error.style.display="none";
+    }else if(document.getElementById("mrkO").checked){
+        status=document.getElementById("mrkO").value;
+        error.style.display="none";
+    }else if(document.getElementById("mrkN").checked){
+        status=document.getElementById("mrkN").value;
+        error.style.display="none";
+    }
         let users_data = JSON.parse(localStorage.getItem('users_data'));
         console.log("in addNewTodo");
         var index=-1;

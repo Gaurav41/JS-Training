@@ -170,23 +170,16 @@ function validateCategories(){
 }
 
 function validateStatus(){
-    let status="";
-    if(document.getElementById("mrkD").checked){
-        status=document.getElementById("mrkD").value;
+    if(document.getElementById("mrkD").checked||document.getElementById("mrkO").checked||document.getElementById("mrkN").checked){
         error.style.display="none";
-    }else if(document.getElementById("mrkO").checked){
-        status=document.getElementById("mrkO").value;
-        error.style.display="none";
-    }else if(document.getElementById("mrkN").checked){
-        status=document.getElementById("mrkN").value;
-        error.style.display="none";
+        return true;
+
     }else{
         error.innerHTML="Please select status";
         error.style.display="block";
         return false;
     }
-    return true;
-
+    
 
 }
 
@@ -225,6 +218,7 @@ function validateIsPublic(){
 
 
 } 
+
 document.getElementById("add").addEventListener("click",addTodo);
 
 function addTodo(){
@@ -252,7 +246,17 @@ function addTodo(){
         remdate="NA";
     }
     
-
+    var status="";
+    if(document.getElementById("mrkD").checked){
+        status=document.getElementById("mrkD").value;
+        error.style.display="none";
+    }else if(document.getElementById("mrkO").checked){
+        status=document.getElementById("mrkO").value;
+        error.style.display="none";
+    }else if(document.getElementById("mrkN").checked){
+        status=document.getElementById("mrkN").value;
+        error.style.display="none";
+    }
 
 		let users_data = JSON.parse(localStorage.getItem('users_data'));
 		console.log("in addNewTodo");
