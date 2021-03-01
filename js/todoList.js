@@ -52,6 +52,13 @@ function showActions(){
 
 function showTime(){
 	var clock_time=document.getElementById("current-time");
+	var curr_date=document.getElementById("current-date");
+	var d=new Date();
+	var date= d.getDay()
+	var month=d.getMonth();
+	var months=["Jan","Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Des"];
+	month=months[month];
+	curr_date.innerHTML=month+", "+date ;
 	setInterval(()=>{
 		var d=new Date();
 		var hrs=d.getHours();

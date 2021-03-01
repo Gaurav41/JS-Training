@@ -24,23 +24,29 @@ header{
  text-align: center;
  color: white;
  margin: 0 auto;
-     padding-top: 14px;
+ padding-top: 14px;
+}
+.navbar{
+  background-color: #333;
+
+
 }
 .navbar ul {
 
   list-style-type: none;
   margin: 0;
   overflow: hidden;
-  background-color: #333;
   font-size: 28px;
-      padding: 0px 40px;
+  padding: 0px 40px;
 }
 
 .navbar li {
+
   float: right;
 }
 
 .navbar li a {
+  font-family: "Frank+Ruhl+Libre",sans-serif;
   display: block;
   color: white;
   text-align: center;
@@ -59,7 +65,8 @@ header{
 #bell{
    
 /*  display:none;
-*/  height: 25px;
+*/  
+height: 25px;
 overflow: hidden;
 margin: 0px;
 padding: 0px;
@@ -71,6 +78,18 @@ padding: 0px;
     top: 7px;
     left: 36px;
     font-size: 20px;
+}
+
+.footer{
+  padding: 0px 40px;
+  background-color: #333;
+  color: white;
+  font-size: 25px;
+ 
+  padding:40px 40px;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Frank+Ruhl+Libre",sans-serif;
 }
 
 .heading{
