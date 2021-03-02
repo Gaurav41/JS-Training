@@ -8,7 +8,7 @@
 .container{
 	position: relative;
 }
-.requiredE { 
+.requiredField { 
 	color:red;
 	font-size: 18px;
 	vertical-align: super;
@@ -19,7 +19,7 @@
 }
 
 .userData-container{
-	background-color: #edece8;
+	background-color:#e2dfe1 /* #edece8*/;
 	margin: 30px auto;
     width: 1000px;
     padding: 50px;
@@ -60,6 +60,8 @@
 }
 #change-profile-icon:hover{
 	opacity: 1;
+	width: 45px;
+    height: 45px;
     position: absolute;
 }
 
@@ -98,23 +100,22 @@
   
      /* padding: 12px 20px; */
     /* margin: 8px 0px; */
-    border: 1px solid #ccc;
+    background-color: bisque;
     float: right;
     width: 290px;
     height: 50px;
     padding-left: 15px;
     font-size: 18px;
-	font-weight: 600;
+	
 }
 
 .userData-container textarea{
-	border: 1px solid #ccc;
+	background-color: bisque;
 	height: 130px;
 	width: 290px;
     right: 0px;
     position: absolute;
     font-size: 18px;
-    font-weight: 600;
     padding-left: 15px;
     padding-top: 15px;
 }
@@ -147,7 +148,20 @@
 	/*width: 100px;
 	height: 30px;*/
 	
-	background-color:#984beb;
+	background-color:#7a7ef7;
+
+}
+#edit-profile-icon{
+	height: 27px;
+    position: absolute;
+    top: 44px;
+    left: 850px;
+
+}
+#edit-profile-icon:hover{
+	height: 32px;
+	cursor: pointer;
+
 
 }
 
@@ -176,17 +190,15 @@
 }
 
 #save-btn{
-	background-color:#58b85d;
-	margin-right: 25px;	 
+	
+	margin-right: 25px;	
+	background-color: #58b85d; 
 
 }
 
-#cancle-btn{
-
-	background-color:#008CBA;
-	margin-left: 25px;	 
-
-
+#cancel-btn{
+	margin-left: 25px;	
+	background-color: #707370;  
 }
 .p-btn{
 	font-size: 25px;

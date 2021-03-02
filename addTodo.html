@@ -13,7 +13,7 @@
 				<label id="logo">Todo App</label>
 				<li><div class="notification">
 				  		<a href="notifications.html"><img id="bell" src="img/bell1.png"><span id="noti"></span> </a>
-				  		</div>
+				  	</div>
 				  </li>
 				  <li><a id="logout" >Logout</a></li>
 				  <li><a href="profile.html">Profile</a></li>
@@ -27,54 +27,43 @@
 			<h1 class="heading">Add New Todo</h1>
 		</div>
 
-
 		<section class="addtodo-container">
 			
 			<div class="form-container">
-			<form  class="addtodo-forms">
-					<div id="error" class="error-msg"></div>
-					<div class="form-group ">
-						<label class="main-label required" for="title">Title: </label>
-						<input class="form-filed" id="title" type="text" name="title" placeholder="Title of todo">
-					</div>
-					<div class="form-group">
-						<label class="main-label required" for="date">Date: </label>
-						<input class="form-filed" id="date" type="date" name="date">
-					</div>
-					<div class="form-group">
-						<label class="main-label required"  for="categories">Categories: </label>
-						<input type="checkbox" name="company-work" class="cat" id="company-work" value="Company-work">
-						<lable for="company-work">Company-work</lable>
-						<input type="checkbox" name="college-work" class="cat" id="college-work" value="College-work">
-						<label for="college-work">College-work</label><br>
-						<input type="checkbox" name="urgent" class="cat" id="urgent" value="Urgent">
-						<label for="urgent">Urgent</label>
-						<input type="checkbox" name="important" class="cat" id="important" value="Important">
-						<label for="important">Important</label>
-						<input type="checkbox" name="other" class="cat" id="other" value="Other">
-						<label for="other">Other</label>
-					</div>
-				
-				
-				<div class="form-group">
-					<label class="main-label required" for="status">Status:</label>
-					<input type="radio" name="status" id="mrkD" value="done">
-					<label for="mrkD">Done</label>	
-					<input type="radio" name="status" id="mrkO" value="ongoing">
-					<label for="mrkO">Ongoing</label>
-					<input type="radio" name="status" id="mrkN" value="not Started">
-					<label for="mrkO">Not Started</label>	
+			<form  id="addtodo-form" class="addtodo-forms">
+				<div id="error" class="error-msg"></div>
+				<div class="form-group ">
+					<label class="main-label required" for="title">Title: </label>
+					<input class="form-field" id="title" type="text" name="title" placeholder="Title of todo">
 				</div>
 				<div class="form-group">
+					<label class="main-label required" for="date">Due Date: </label>
+					<input class="form-field" id="date" type="date" name="date">
+				</div>
+				<div class="form-group">
+					<label class="main-label required"  for="categories">Categories: </label>
+					<input type="checkbox" name="company-work" class="cat" id="company-work" value="Company-work">
+					<lable for="company-work">Company-work</lable>
+					<input type="checkbox" name="college-work" class="cat" id="college-work" value="College-work">
+					<label for="college-work">College-work</label><br>
+					<input type="checkbox" name="urgent" class="cat" id="urgent" value="Urgent">
+					<label for="urgent">Urgent</label>
+					<input type="checkbox" name="important" class="cat" id="important" value="Important">
+					<label for="important">Important</label>
+					<input type="checkbox" name="other" class="cat" id="other" value="Other">
+					<label for="other">Other</label>
+				</div>
+				
+				<div class="form-group">
 					<label class="main-label" for="reminder">Reminder:</label>
-					<select class="form-filed" name="reminder" id="reminder" onchange="showRemDate()">
+					<select class="form-field" name="reminder" id="reminder" onchange="showRemDateInputField()">
 						<option value="No"><lable for="No">No</lable></option>
 						<option value="Yes" ><lable for="Yes" >Yes</lable></option>
 					</select>
 				</div>
 				<div class="form-group" id="reminder-date">
 					<label class="main-label required" for="remD">Reminder Date:</label>
-					<input class="form-filed" id="remD" type="date" name="remD" >
+					<input class="form-field" id="remD" type="date" name="remD" >
 				</div>
 				<div class="form-group">
 					<label class="main-label required">Is public:</label>
@@ -85,7 +74,7 @@
 				</div>
 				<div class="form-group">
 					<label class="main-label" for="attachment">Attachment:</label>
-					<input class="form-filed" type="file" id="attachment" name="attachment"  accept="application/pdf,image/*">
+					<input class="form-field" type="file" id="attachment" name="attachment"  accept="application/pdf,image/*">
 				</div>
 				<div class="form-group ">
 					<input id="add"class="form-control add-btn" type="button" name="add" value="Add">
@@ -98,10 +87,10 @@
 		</section>
 	</main>
 	<footer>
-			<div class="footer">
-				Todo App - fully built in JavaScript
-			</div>
-		</footer>
+		<div class="footer">
+			<p>Todo App - fully built in JavaScript</p>
+		</div>
+	</footer>
 	<script type="text/javascript" src="js/addTodo.js"></script>
 	<script type="text/javascript" src="js/notification.js"></script>
 

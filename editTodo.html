@@ -23,36 +23,34 @@
 			<h1 class="heading">Update Todo</h1>
 		</div>
 
-
 		<section class="addtodo-container">
 			
 			<div class="form-container">
 			<form class="addtodo-forms">
-					<div id="error" class="error-msg"></div>
-					<div class="form-group ">
-						<label class="main-label required" for="title">Title: </label>
-						<input class="form-filed" id="title" type="text" name="title" placeholder="Title of todo">
-					</div>
-					<div class="form-group">
-						<label class="main-label required" for="date">Date: </label>
-						<input class="form-filed" id="date" type="date" name="date">
-					</div>
-					<div class="form-group">
-						<label class="main-label required"  for="categories">Categories: </label>
-						<input type="checkbox" name="Company-work" class="cat" id="Company-work" value="Company-work">
-						<lable for="company-work ">Company-work</lable>
-						<input type="checkbox" name="College-work" class="cat" id="College-work" value="College-work">
-						<label for="college-work">College-work</label><br>
-						<input type="checkbox" name="Urgent" class="cat" id="Urgent" value="Urgent">
-						<label for="urgent">Urgent</label>
-						<input type="checkbox" name="Important" class="cat" id="Important" value="Important">
-						<label for="important">Important</label>
-						<input type="checkbox" name="Other" class="cat" id="Other" value="Other">
-						<label for="other">Other</label>
-					</div>
-				
-				
+				<div id="error" class="error-msg"></div>
+				<div class="form-group ">
+					<label class="main-label required" for="title">Title: </label>
+					<input class="form-field" id="title" type="text" name="title" placeholder="Title of todo">
+				</div>
 				<div class="form-group">
+					<label class="main-label required" for="date">Due Date: </label>
+					<input class="form-field" id="date" type="date" name="date">
+				</div>
+				<div class="form-group">
+					<label class="main-label required"  for="categories">Categories: </label>
+					<input type="checkbox" name="Company-work" class="cat" id="Company-work" value="Company-work">
+					<lable for="company-work ">Company-work</lable>
+					<input type="checkbox" name="College-work" class="cat" id="College-work" value="College-work">
+					<label for="college-work">College-work</label><br>
+					<input type="checkbox" name="Urgent" class="cat" id="Urgent" value="Urgent">
+					<label for="urgent">Urgent</label>
+					<input type="checkbox" name="Important" class="cat" id="Important" value="Important">
+					<label for="important">Important</label>
+					<input type="checkbox" name="Other" class="cat" id="Other" value="Other">
+					<label for="other">Other</label>
+				</div>
+				
+				<!-- <div class="form-group">
 					<label class="main-label required" for="status">Status:</label>
 					<input type="radio" name="status" id="mrkD" value="done">
 					<label for="mrkD">Done</label>	
@@ -60,17 +58,32 @@
 					<label for="mrkO">Ongoing</label>
 					<input type="radio" name="status" id="mrkN" value="not Started">
 					<label for="mrkO">Not Started</label>	
+				</div> -->
+				<div class="form-group">
+					<label class="main-label" for="status">Status:</label>
+					<input class="form-field" type="text" name="status" id="status" disabled="true">
+					
+				</div>
+				<div class="form-group" id="MarkDone">
+					<input type="checkbox" name="MarkAsDone" id="MarkAsDone" value="MarkAsDone">
+					<label for="mrkD" >Mark as Done</label>	
+					
+				</div>
+				<div class="form-group" id="MarkPending">
+					<input type="checkbox" name="MarkAsPending" id="MarkAsPending" value="MarkAsPending">
+					<label for="mrkD" >Mark as Pending</label>	
+					
 				</div>
 				<div class="form-group ">
 					<label class="main-label" for="reminder">Reminder:</label>
-					<select class="form-filed" name="reminder" id="reminder" onchange="showRemDate()">
+					<select class="form-field" name="reminder" id="reminder" onchange="showRemDateInputField()">
 						<option value="No"><lable for="No">No</lable></option>
 						<option value="Yes" ><lable for="Yes" >Yes</lable></option>
 					</select>
 				</div>
 				<div class="form-group" id="reminder-date">
 					<label class="main-label required" for="remD">Reminder Date:</label>
-					<input class="form-filed" id="remD" type="date" name="remD" >
+					<input class="form-field" id="remD" type="date" name="remD" >
 				</div>
 				<div class="form-group">
 					<label class="main-label required">Is public:</label>
@@ -83,18 +96,15 @@
 					<input id="save" class="form-control add-btn" type="button" name="save" value="Save">
 					<input id="cancle" class="form-control reset-btn" type="button" name="cancle" value="Cancle">
 				</div>
-
-				</div>
 			</form>
 			</div>
 		</section>
 	</main>
 	<footer>
-			<div class="footer">
-				Todo App - fully built in JavaScript
-			</div>
+		<div class="footer">
+			<p>Todo App - fully built in JavaScript</p>
+		</div>
 	</footer>
-	<!-- <script type="text/javascript" src="js/todo.js"></script> -->
 	<script type="text/javascript" src="js/editTodo.js"></script>
 
 </body>

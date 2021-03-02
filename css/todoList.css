@@ -48,10 +48,10 @@ padding: 0px;
     margin-left: 40px;
     position: absolute;
     display: inline-block;
-    background-color: #cccccc;
+    background-color: #e6b1cc;
     font-family: "Orbitron",sans-serif;
     padding: 5px;
-    border: 2px solid black;
+    border: 2px solid #c597af;
     width: 118px;
     /* left: 10px; */
     text-align: center;
@@ -60,8 +60,7 @@ padding: 0px;
 #current-time{
   font-family:"Orbitron",sans-serif;
   padding: 5px;
-  border:2px solid black;
-  background-color:  #f2f2f2;
+  background-color: #c18fa9/* #f2f2f2*/;
 
 }
 #clock #close-clock{
@@ -79,7 +78,7 @@ padding: 0px;
 .table-header th{
   font-weight: 200;
   font-family: "Oswald",sans-serif;
-   background-color: #cccccc; 
+   background-color: #e6b1cc/*#cccccc*/; 
 
   
 }
@@ -94,27 +93,38 @@ padding: 0px;
 }
 .table-contorls{
   position: relative;
-  height:80px;
+  height:120px;
   border: 1px solid black;
-  background-color: #edece8;
+  background-color:#c287e6/* #edece8*/;
   padding: 10px;
   font-family: "Poppins",sans-serif;
   width: 1350px;
   box-sizing: border-box;
 }
 .filters{
-  display: inline-block;
-  position: relative;
+  display: block;
   float: left;
-  margin-top: 15px;
-  margin-left: 5px;
+  margin-top: 11px;
+  margin-right: 5px;
+  width: 184px;
+  border: 1px solid #d2a3bb;
+
+  background-color: #e6b1cc;
+  padding: 6px;
 }
 
+.filters label{
+  display: block;
+  text-align: center;
+  margin:5px; 
+}
 .action-btns{
   display: inline-block;
   position: absolute;
-  right: 5px;
+  right: 10px;
+  top:20px;
   height: 10px;
+  font-size: 25px;
   color: white;
 }
 
@@ -123,19 +133,19 @@ padding: 0px;
     background-color: #58b85d;
     color: white;
     margin-bottom: 5px;
-    margin-top: 5px;
+    
     width: 130px;
-    height: 25px;
+    height: 30px;
 }
 #delete-todo{
   background-color: red;
   color: white;
-  height: 25px;
+  height: 30px;
 }
 #edit-todo{
   background-color: #f7c539;
   color: white;
-  height: 25px;
+  height: 30px;
 }
 /*
 .cf{
@@ -168,29 +178,36 @@ padding: 0px;
   }
   */
 #nfc{
-    position: absolute;
-    left: 272px;
-    display: none; 
-    top: 4px;
+   /*display: none;*/
+    
 }
 
   #dfc{
-    top: 6px;
+    /*top: 6px;
     position: absolute;
-    left: 413px;
+    left: 413px;*/
     display: none;
   }
 
   #cfc{
-    position: absolute;
+    /*position: absolute;
     display: none;
     top: 5px;
-    right: 0px;
+    right: 0px;*/
+    /*display: none;*/
+  }
+  #sfc{
+   /* position: absolute;
+    
+    top: 5px;
+    right: 0px;*/
+   /* display: none;*/
   }
 
   .f-close-icon{
     width: 20px;
     height: 20px;
+    display: none;
   }
 
 .list-cotainer{
@@ -203,32 +220,27 @@ padding: 0px;
 
 }
 
-.s1{
+.select-list{
   background-color: white;
   border:none;
-  width: 110px;
+  width: 155px;
   height: 30px;
-  margin-right: 20px; 
 }
-.s2{
-  background-color: white;
-  border:none;
 
-  width: 130px;
-  height: 30px;
-  margin-right: 20px; 
-  text-align: right;
-}
+
 #nsearch{
      height: 28px;
-    margin-right: 25px;
     border: none;
 
 }
-.dfilter{
+.sfilter{
+  display: block;
+}
 
-  height: 20px;
-  margin-right: 25px; 
+.dfilter{
+  /*height: 20px;
+  margin-right: 25px; */
+  width: 360px;
 
 }
 

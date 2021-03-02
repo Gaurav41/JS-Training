@@ -19,14 +19,15 @@
 	display: none;
 }
 .form-group{
-	font-size: 25px;
+	font-size: 23px;
 	margin:20px auto; 	 
 }
-.form-filed{
+.form-field{
 	padding-left: 15px;
 	height: 40px;
-    width: 200px;
+    width: 350px;
     font-size: 15px;
+    text-align: center;
 
 }
 
@@ -34,14 +35,19 @@ label{
 
 }
 .form-container{
-	/*border: 2px solid;*/
-	width: 50%;
+	border: 2px solid;
+	width: 30%;
 	margin: 0 auto;
 	padding: 10px;
+	text-align: center;
+	background-color: #e6b1cc;
 }
 .main-label{
 	font-size: 25px;
-	color: green;
+	color: black;
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
 
 }
 
@@ -71,4 +77,11 @@ label{
 .reset-btn:hover{
 	color:#58b85d;
 	background-color:  white;
+}
+
+#attachment{
+	width: 220px;
+}
+#reminder{
+	text-align: center;
 }

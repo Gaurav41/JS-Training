@@ -31,12 +31,10 @@
 			<div class="page-header">
 				<img src="img/login.png" id="user-img">		
 				<a href="#" id="change-profile"><img src="img/camera.png" id="change-profile-icon"></a>
-
-				</div>
-			</div>
-			
+			</div>			
 			<div class="profile-header">
 				<h1 class="heading">My Profile</h1>
+				<img id="edit-profile-icon" src="img/edit2.png">
 			</div>
 			<section class="upload-img-container" id="upload-img-container">	
 					<div class="upload-pic">
@@ -52,11 +50,11 @@
 					<div class="data-table">
 						<div class="data-row">
 							<div class="data-cell">
-								<label for="f-name">First name :<span class="requiredE">*</span></label>
+								<label for="f-name">First name :<span class="requiredField">*</span></label>
 								<input id="f-name" class="ip-rw" type="text" name="f-name" >
 							</div>	
 							<div class="data-cell cell2">
-								<label> Last name :<span class="requiredE">*</span></label>
+								<label> Last name :<span class="requiredField">*</span></label>
 								<input id="l-name" class="ip-rw" type="text" name="l-name" >
 							</div>	
 						</div>
@@ -66,51 +64,40 @@
 								<input id="username" class="ip-rw" type="text" name="username">
 							</div>
 							<div class="data-cell cell2">
-									<label>Address :</label>
-									<textarea id="address" class="ip-rw" type="text" name="address" ></textarea> 
-								</div>
+								<label>Address :</label>
+								<textarea id="address" class="ip-rw" type="text" name="address" ></textarea>
+							</div>
 							
 						</div>
 						<div>
 							<div class="data-row">
 								<div class="data-cell" >
-									<!-- <label > Gender :</label> -->
-									<!-- <input id="gender" type="text" name="gender"> -->
-									<!-- <select id="ddlViewBy">
-									  <option value="Male">Male</option>
-									  <option value="Female">Female</option>
-									  <option value="Other">Other</option>
-									</select> -->
-							<label > Gender :<span class="requiredE">*</span></label>	
-							<div id="gender" class="gender-radio" >
-						
-							<input class="gender-radio-btn" id='m' type="radio" value="Male" name="gender"> <span class="gender-label">Male</span>
-					    	<input class="gender-radio-btn" id="f" type="radio" value="Female" name="gender"><span class="gender-label">Female</span>
-					    	<input class="gender-radio-btn" id="o" type="radio" value="Other" name="gender"><span class="gender-label">Other</span>
-					 	</div>
+									<label > Gender :<span class="requiredField">*</span></label>	
+									<div id="gender" class="gender-radio" >
+										<input class="gender-radio-btn" id='m' type="radio" value="Male" name="gender"> <span class="gender-label">Male</span>
+								    	<input class="gender-radio-btn" id="f" type="radio" value="Female" name="gender"><span class="gender-label">Female</span>
+								    	<input class="gender-radio-btn" id="o" type="radio" value="Other" name="gender"><span class="gender-label">Other</span>
+							 		</div>
 								</div>
-							</div>
-							
+							</div>	
 						</div>
 						
 						<!-- <div class="update-info-btn " id="update-info-btn">
 							<input id="save-btn" class="p-btn" type="button" value="Save" >
-							<input id="cancle-btn" class="p-btn" type="reset" value="cancle" >
-
+							<input id="cancel-btn" class="p-btn" type="reset" value="cancel" >
 						</div> -->
 					</div>
 					
 				</form>
 				<div class="update-info-btn " id="update-info-btn">
-							<input id="save-btn" class="p-btn" type="button" value="Save" >
-							<input id="cancle-btn" class="p-btn" type="reset" value="Cancle" >
+					<input id="save-btn" class="p-btn" type="button" value="Save" >
+					<input id="cancel-btn" class="p-btn" type="reset" value="cancel" >
 
-						</div>
-				<div class="edit-info-btn" id="edit-info-btn" >
-							<button class="p-btn" id="edit-btn">Edit</button>
-						</div>
+				</div>
+				<!-- <div class="edit-info-btn" id="edit-info-btn" >
+					<button class="p-btn" id="edit-btn">Edit</button>
+				</div> -->
 			</div>
-			
 			</div>
 				
 		</section>

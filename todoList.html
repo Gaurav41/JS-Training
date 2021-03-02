@@ -7,7 +7,6 @@
 </head>
 <body>
 	<main class="container">
-		
 		<header>
 			<div class="navbar">
 				<ul>
@@ -19,14 +18,12 @@
 				  <li><a id="logout">Logout</a></li>
 				  <li><a href="profile.html">Profile</a></li>
 				  <li><a href="todoList.html">List Todos</a></li>
-				  <li><a href="addTodo.html">Add Todo</a></li>
-				  
+				  <li><a href="addTodo.html">Add Todo</a></li>  
 				</ul>
 			</div>
 		</header>
 		<div id="clock">
 			<img id="close-clock" src="img/cross1.png">
-			<!-- <div class="c-label">Now</div> -->
 			<div id="current-date"></div>
 			<div id="current-time"></div>
 		</div>
@@ -38,29 +35,35 @@
 			<div class="list-table-cntainer">
 				<div class="table-contorls">
 					<div class="sf">	
-						<div class="filters">
+						<div class="filters sfilter">
 							<label for="sort-filter" >Sort By: </label>
-							<select class="s1" name="sort-filter" id="sort-filter" >
+							<select class="select-list" name="sort-filter" id="sort-filter" >
 								<option>-Select-</option>
 								<option value="Title">Title</option>
 								<option value="Date">Date</option>
 								<option value="Status">Status</option>
 							</select>
+							<img id="sortfc" class="f-close-icon" src="img/cross2.png">
 						</div>	
-						<div class="filters">
+						<div class="filters nfilter">
 								<label>Filter by name</label>
-								<input  type="text" name="nsearch" id="nsearch">
+								<input  type="text" name="nsearch" class="select-list" id="nsearch">
 								<img id="nfc" class="f-close-icon" src="img/cross2.png">	
 						</div>
-						<div class="filters dfilter">	
-							<label>Filter by date</label>
-							<input type="date" class="dateFilter" name="sdate" id="sdate"><label>:</label>
-							<input type="date" class="dateFilter" name="edate" id="edate">
-							<img id="dfc" class="f-close-icon" src="img/cross2.png">
-						</div>
 						<div class="filters">
-							<label>Category</label>
-							<select name="catFilter" class="s2" id="catFilter" >
+							<label>Filter By status</label>
+							<select name="statusFilter" class="select-list" id="statusFilter" >
+								<option value="">Select</option>
+								<option value="Done">Done</option>
+								<option value="Pending">Pending</option>
+								<option value="Overdue">Overdue</option>
+							</select>
+							<img id="sfc" class="f-close-icon" src="img/cross2.png">
+						</div>
+						
+						<div class="filters">
+							<label>Filter By Category</label>
+							<select name="catFilter" class="select-list" id="catFilter" >
 								<option value="">Select</option>
 								<option value="Company-work">Company-work</option>
 								<option value="College-work">College-work</option>
@@ -70,19 +73,18 @@
 							</select>
 							<img id="cfc" class="f-close-icon" src="img/cross2.png">
 						</div>
+						<div class="filters dfilter">	
+							<label>Filter by date</label>
+							<input type="date" class="dateFilter select-list" name="sdate" id="sdate"><span>To</span>
+							<input type="date" class="dateFilter select-list" name="edate" id="edate">
+							<img id="dfc" class="f-close-icon" src="img/cross2.png">
+						</div>
 						<div class="action-btns" id="action-btns">
 							<button id="mrkD-todo">Mark as Done</button>
 							<button id="delete-todo">Delete</button>
 							<button id="edit-todo">Edit Todo</button>
 						</div>
 					</div>
-					<!-- <div class="cf">
-						<img id="nf" class="f-close-icon" src="img/cross2.png"> 
-						<img id="df" class="f-close-icon" src="img/cross2.png">
-						<img id="cf" class="f-close-icon" src="img/cross2.png">
-						
-					</div> -->
-			
 				</div>
 					<div id="error"></div>
 					<table id="list-table">
@@ -105,15 +107,13 @@
 								<td></td>
 							</tr>
 							</tbody>
-						<!-- </div> -->
-						
-							
-					</table>				
+						<!-- </div> -->	
+						</table>				
 			</div>
 		</section>
 		<footer>
 			<div class="footer">
-				Todo App - fully built in JavaScript
+				<p>Todo App - fully built in JavaScript</p>
 			</div>
 		</footer>
 
