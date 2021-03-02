@@ -93,7 +93,6 @@ function updateStatus(){
 	for (var i =0;i<todos.length;i++){
 		if(new Date(todos[i].date) < new Date(currentDate) && todos[i].status!=="Done"){
 			todos[i].status="Overdue";
-			console.log(todos[i].title + " :Overdue")
 		}
 	}
 	 users_data[index].todos=todos;
@@ -147,7 +146,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 	document.getElementById("delete-todo").addEventListener("click",()=>{
-		console.log("in deletd fun");
 		let selected_todos  =  document.querySelectorAll(".action-box"); 
 		let flag = false;
 		let dindex = [];
@@ -251,18 +249,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 	{	
 		if(todo_array.length == 0){
 			var table = document.getElementById("list-table");
-			table.style.display = "none";	
-			var div  =  document.createElement("div");
-			div.innerHTML  =  "You Don't have any Todo";
-			div.style.backgroundColor = "#adf7b1";
-			div.style.margin = "20px auto";
-			div.style.textAlign = "center";
-			div.style.width = "250px";
-			div.style.height = "100px";
-			div.style.fontSize = "25px";
-			div.style.paddingTop = "40px";
-			document.body.appendChild(div);
-			return false;
+			table.style.display = "none";
+
+			var div = document.getElementById("no-data-div");
+			div.innerHTML  =  "You Don't have any Todo";		
+			div.style.display="block";	
+		return false;
 		}
 
 		let tname,date,categories;
@@ -302,20 +294,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 	}
 	
-	function sortByStatus(todo_array){
-		
-		/*todo_array.sort(function(a,b){
-			aStatus = a.status.toUpperCase();
-			bStatus = b.status.toUpperCase();
-			if(aStatus>bStatus)
-				return 1;
-			if (aStatus<bStatus) {
-				return -1;
-			}
-			return 0;
-		});*/
-		return todo_array;
-	}
 
 	function deleteTodo(indices,todo_array){
 		for( var i = 0;i < indices.length; i++)
@@ -326,7 +304,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	}
 
 	document.getElementById("nsearch").addEventListener("change",()=>{	
-		  document.getElementById("nfc").style.display = "inline";
+		  document.getElementById("nameSearchClose").style.display = "inline";
 		  document.getElementById("nsearch").style.backgroundColor = "#adf7b1";
 		  let input, filter_text, table_body, tr, td, txtValue;
 		  let flag = false;
@@ -355,8 +333,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 		  }
 	});
 	
-	document.getElementById("nfc").addEventListener("click",()=>{
-		document.getElementById("nfc").style.display = "none";
+	document.getElementById("nameSearchClose").addEventListener("click",()=>{
+		document.getElementById("nameSearchClose").style.display = "none";
 		document.getElementById("nsearch").style.backgroundColor = "";
 		let err = document.getElementById("error");
 		error.style.display = "none";
@@ -376,7 +354,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  	return false;
 	  }
 	  
-	  document.getElementById("dfc").style.display ="inline";
+	  document.getElementById("dateFilterClose").style.display ="inline";
 	  document.getElementById("edate").style.backgroundColor = "#adf7b1";
 	  document.getElementById("sdate").style.backgroundColor = "#adf7b1";
 	  let sdate,edate, filter_text, table_body, tr, td, txtValue;
@@ -406,8 +384,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 
 	});
-	document.getElementById("dfc").addEventListener("click",()=>{
-		document.getElementById("dfc").style.display = "none";
+	document.getElementById("dateFilterClose").addEventListener("click",()=>{
+		document.getElementById("dateFilterClose").style.display = "none";
 		let err = document.getElementById("error");
 		error.style.display = "none";
 		document.getElementById("sdate").style.backgroundColor = "";
@@ -420,7 +398,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 		
 	document.getElementById("catFilter").addEventListener("change",()=>{
-		document.getElementById("cfc").style.display = "inline";
+		document.getElementById("categoryFilterClose").style.display = "inline";
 		document.getElementById("catFilter").style.backgroundColor = "#adf7b1";
 		let input, filter_text, table_body, tr, td, txtValue;
 		let flag = false;
@@ -448,19 +426,18 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 	});
 
-	document.getElementById("cfc").addEventListener("click",()=>{
-		document.getElementById("cfc").style.display = "none";
+	document.getElementById("categoryFilterClose").addEventListener("click",()=>{
+		document.getElementById("categoryFilterClose").style.display = "none";
 		let err = document.getElementById("error");
 		error.style.display = "none";
 		document.getElementById("catFilter").style.backgroundColor = "";
 
-		console.log("in cf")
 		document.getElementById("catFilter").value = "";
 		showTodoList(todo_array);
 	});
 
 	document.getElementById("statusFilter").addEventListener("change",()=>{
-		document.getElementById("sfc").style.display = "inline";
+		document.getElementById("statusFilterClose").style.display = "inline";
 		document.getElementById("statusFilter").style.backgroundColor = "#adf7b1";
 		let input, filter_text, table_body, tr, td, txtValue;
 		let flag = false;
@@ -488,13 +465,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 	});
 
-	document.getElementById("sfc").addEventListener("click",()=>{
-		document.getElementById("sfc").style.display = "none";
+	document.getElementById("statusFilterClose").addEventListener("click",()=>{
+		document.getElementById("statusFilterClose").style.display = "none";
 		let err = document.getElementById("error");
 		error.style.display = "none";
 		document.getElementById("statusFilter").style.backgroundColor = "";
 
-		console.log("in sf")
 		document.getElementById("statusFilter").value = "";
 		showTodoList(todo_array);
 	});

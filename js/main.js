@@ -24,7 +24,6 @@ function getLoginCredentialsFromUser(){
 	{		
 		if(isAuthenticateUser(uname,upass))
 		{	
-			console.log("Login Successful");
 			localStorage.setItem("LoggedInUser",uname);
 			window.location.href = "./todolist.html";
 
@@ -47,7 +46,7 @@ function isAuthenticateUser(uname,pass)
 {	
 	if(localStorage.getItem('users_data')){
 		let u = JSON.parse(localStorage.getItem('users_data'));
-		console.log(u);
+
 		for(let i = 0;i < u.length; i++)
 		{
 			if(u[i].uname === uname && u[i].password === pass)

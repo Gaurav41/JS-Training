@@ -81,7 +81,6 @@ function generateId(){
             break;
             }
         }
-       // console.log("length:"+users_data[index].todos.length);
         let len = users_data[index].todos.length;
         if(len == 0){
                 id = 0;
@@ -298,6 +297,9 @@ function addTodo(){
                         }
                         if(formElements[i].type  ==  "select-one"){
                             formElements[i].selectedIndex = 0;
+                        }
+                         if(formElements[i].type  ==  "file"){
+                            formElements[i].value = "";
                         }
 
                      }

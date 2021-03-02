@@ -60,14 +60,12 @@ document.addEventListener("DOMContentLoaded",() =>{
 				err.innerHTML = "";
 				isUnameValid = true;
 				uname.style.border = "2px solid green";
-				console.log("uname available");	
 				return true;
 			}else{
 				err.innerHTML = "Username already Exits!";	
 				err.style.color = "red";
 				uname.style.border = "2px solid red";
 				isUnameValid = false;
-				console.log("Username already Exits");
 				return false;	
 			}		
 		}else{
@@ -285,7 +283,6 @@ document.addEventListener("DOMContentLoaded",() =>{
 		}
 
 		let new_user = new User(uname.value,fname.value,lname.value,gender,password.value,address.value);
-		console.log(new_user);
 		try{
 			let u  =  JSON.parse(localStorage.getItem('users_data'));
 			u.push(new_user);

@@ -56,7 +56,7 @@ function loadData(){
 	{
 		x[counter].disabled = "true";
 	}
-
+	document.getElementById("new-profile-img").disabled = false;
 	document.getElementById('address').disabled = true;
 	document.getElementById('m').disabled = true;
 	document.getElementById('f').disabled = true;
@@ -214,10 +214,17 @@ cp.addEventListener("click",()=>{
 		});
 		let upld_btn = document.getElementById("upld_btn");
 		upld_btn.addEventListener("click",()=>{
-			localStorage.setItem(localStorage.getItem("LoggedInUser"),user_img);
-			alert("Profile picture uploaded");
-			cps.style.display = "none";
-			document.getElementById("user-img").setAttribute("src",user_img);
+			if(user_img){
+				localStorage.setItem(localStorage.getItem("LoggedInUser"),user_img);
+				document.getElementById("user-img").setAttribute("src",user_img);
+				new_pic.value="";
+				cps.style.display = "none";
+				user_img="";
+				alert("Profile picture uploaded");
+			}else{
+				alert("Please select image")
+			}
+			
 		});
 	}
 

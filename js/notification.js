@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 		if(todo_array[j].remDate !== "NA"){
 			if (todo_array[j].remDate === date && todo_array[j].status != "done" ) {
 				notify[i] = todo_array[j];
-				console.log("id:" + notify[i].id);
 				i++;
 			}
 		} 

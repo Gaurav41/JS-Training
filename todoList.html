@@ -41,14 +41,12 @@
 								<option>-Select-</option>
 								<option value="Title">Title</option>
 								<option value="Date">Date</option>
-								<option value="Status">Status</option>
 							</select>
-							<img id="sortfc" class="f-close-icon" src="img/cross2.png">
 						</div>	
 						<div class="filters nfilter">
 								<label>Filter by name</label>
 								<input  type="text" name="nsearch" class="select-list" id="nsearch">
-								<img id="nfc" class="f-close-icon" src="img/cross2.png">	
+								<img id="nameSearchClose" class="f-close-icon" src="img/cross2.png">	
 						</div>
 						<div class="filters">
 							<label>Filter By status</label>
@@ -58,7 +56,7 @@
 								<option value="Pending">Pending</option>
 								<option value="Overdue">Overdue</option>
 							</select>
-							<img id="sfc" class="f-close-icon" src="img/cross2.png">
+							<img id="statusFilterClose" class="f-close-icon" src="img/cross2.png">
 						</div>
 						
 						<div class="filters">
@@ -71,13 +69,13 @@
 								<option value="Important">Important</option>
 								<option value="Other">Other</option>
 							</select>
-							<img id="cfc" class="f-close-icon" src="img/cross2.png">
+							<img id="categoryFilterClose" class="f-close-icon" src="img/cross2.png">
 						</div>
 						<div class="filters dfilter">	
 							<label>Filter by date</label>
 							<input type="date" class="dateFilter select-list" name="sdate" id="sdate"><span>To</span>
 							<input type="date" class="dateFilter select-list" name="edate" id="edate">
-							<img id="dfc" class="f-close-icon" src="img/cross2.png">
+							<img id="dateFilterClose" class="f-close-icon" src="img/cross2.png">
 						</div>
 						<div class="action-btns" id="action-btns">
 							<button id="mrkD-todo">Mark as Done</button>
@@ -86,6 +84,7 @@
 						</div>
 					</div>
 				</div>
+				<div id="no-data-div"></div>
 					<div id="error"></div>
 					<table id="list-table">
 						<thead class="table-header">

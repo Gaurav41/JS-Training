@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded",() =>{
     		reminder = todos[j].reminder;
     		remDate =  (todos[j].remDate);
     		isPublic = todos[j].isPublic;
-    		console.log(date);
     		break;
     	}	
     }
@@ -349,7 +348,6 @@ function updateTodo(){
 		let new_todo = new Todo(id,title.value,date.value,categories,status,reminderStatus,remdate,isPublic);
 
 		let users_data  =  JSON.parse(localStorage.getItem('users_data'));
-		console.log("in update todo");
 			
     	for(let j = 0;j < todos.length; j++)
         {
