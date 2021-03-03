@@ -1,32 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-body{
-  /*overflow: hidden;*/
-}
-
 .container{
-	/*overflow-y: hidden;*/
 	margin: 0;
 	padding: 0;
 }
-a{
+
+#list-table a{
   text-decoration: none;
   color:#030bfc;
 }
-a:hover{
+#list-table a:hover{
   color:red;
 }
+
 .notification{
   display: inline-block;
   position: relative;
 }
-#bell{
-   
-/*  display:none;
-*/  height: 25px;
-
-margin: 0px;
-padding: 0px;
+#bell{ 
+  height: 25px;
+  margin: 0px;
+  padding: 0px;
 }
 #noti{
     color: red;
@@ -53,7 +47,6 @@ padding: 0px;
     padding: 5px;
     border: 2px solid #c597af;
     width: 118px;
-    /* left: 10px; */
     text-align: center;
 
 }
@@ -78,19 +71,15 @@ padding: 0px;
 .table-header th{
   font-weight: 200;
   font-family: "Oswald",sans-serif;
-   background-color: #e6b1cc/*#cccccc*/; 
-
-  
+   background-color: #e6b1cc/*#cccccc*/;  
 }
 
-.table-header{
- 
-}
-.scrollable{
+/*.scrollable{
     
     overflow-y:scroll;
     height:100px;
-}
+}*/
+
 .table-contorls{
   position: relative;
   height:120px;
@@ -175,19 +164,17 @@ padding: 0px;
   height: 30px;
 }
 
-
 #nsearch{
-     height: 28px;
-    border: none;
+  height: 28px;
+  border: none;
+  padding-left: 10px;
+  box-sizing: border-box; 
 
-}
-.sfilter{
-  display: block;
 }
 
 .dfilter{
   
-  width: 314px;
+  width: 310px;
 
 }
 

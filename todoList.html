@@ -41,14 +41,15 @@
 						<div class="filters sfilter">
 							<label for="sort-filter" >Sort By: </label>
 							<select class="select-list" name="sort-filter" id="sort-filter" >
-								<option>-Select-</option>
+								<option value="">Select</option>
 								<option value="Title">Title</option>
 								<option value="Date">Date</option>
 							</select>
+							<img id="sortFilterClose" class="f-close-icon" src="img/cross2.png">
 						</div>	
 						<div class="filters nfilter">
 								<label>Filter by name</label>
-								<input  type="text" name="nsearch" class="select-list" id="nsearch">
+								<input  type="text" name="nsearch" class="select-list" id="nsearch" placeholder="Todo Title">
 								<img id="nameSearchClose" class="f-close-icon" src="img/cross2.png">	
 						</div>
 						<div class="filters">
@@ -93,7 +94,7 @@
 						<thead class="table-header">
 							<tr>
 								<th>TODO</th>
-								<th>DATE</th>
+								<th>DUE DATE</th>
 								<th>CATEGORIES</th>
 								<th>STATUS</th>
 								<th>REMINDER</th>

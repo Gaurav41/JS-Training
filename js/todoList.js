@@ -134,11 +134,18 @@ document.addEventListener('DOMContentLoaded',()=>{
 			switch(sortBy){
 				case "Title" :col = 0; 
 							sortTableByName(col);
+							document.getElementById("sort-filter").style.backgroundColor = "#adf7b1";
+							document.getElementById("sortFilterClose").style.display = "inline";
+
 							break;
 				case "Date" : col = 1;
 							sortTableByDate(col);
+							document.getElementById("sort-filter").style.backgroundColor = "#adf7b1";
+							document.getElementById("sortFilterClose").style.display = "inline";
 							break;			
-				default: return ;
+				default: showTodoList(todo_array);
+							document.getElementById("sortFilterClose").style.display = "none";
+						return ;
 			}
 		}
 
@@ -533,6 +540,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 	    }
 	  }
 	}
+	document.getElementById("sortFilterClose").addEventListener("click",()=>{
+		document.getElementById("sortFilterClose").style.display = "none";
+		let err = document.getElementById("error");
+		error.style.display = "none";
+		document.getElementById("sort-filter").style.backgroundColor = "";
+		document.getElementById("sort-filter").value = "";
+		showTodoList(todo_array);
+	});
 
 
 });
