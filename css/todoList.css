@@ -223,7 +223,7 @@ input [ type="date"]{
   display: table;
   text-align: center;
   padding: 12px;
-  width:1190px /*1350px;*/
+  width: 1190px; /*1350px;*/
   box-sizing: border-box;
 
 }
