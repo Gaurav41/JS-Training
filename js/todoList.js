@@ -264,7 +264,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 		return false;
 		}
 
-		let tname,date,categories;
 		let table_body = document.getElementById("table-body");
 		table_body.innerHTML = "";
 		let todo;
@@ -293,11 +292,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 			if(todo.attachment !== ""){
 				new_row  += "<td><a href = 'view.html?id = " + todo.id + "' target = _blank >View</a></td>" + "</tr>";
 			}else{
-				new_row  += "<td></td></tr>";	
+				new_row  += "<td></td></tr><tr></tr>";	
 			}
 
 		}
 		table_body.innerHTML  += new_row;
+		let tableRows = table_body.getElementsByTagName("tr");
+		lastRow = tableRows[tableRows.length - 1];
+		lastRow.style.borderBottom = "1px solid black";
 
 	}
 	

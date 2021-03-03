@@ -213,7 +213,7 @@ input [ type="date"]{
    width: 450px;
 }
 
-#list-table th,#list-table td{
+#list-table th,#list-table tr{
   border-bottom:  1px solid #ddd;
 
 }
