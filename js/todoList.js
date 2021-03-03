@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 			if(todo.attachment !== ""){
 				new_row  += "<td><a href = 'view.html?id = " + todo.id + "' target = _blank >View</a></td>" + "</tr>";
 			}else{
-				new_row  += "<td></td></tr><tr></tr>";	
+				new_row  += "<td></td></tr>";	
 			}
 
 		}
