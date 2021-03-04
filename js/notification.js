@@ -13,6 +13,7 @@ function getTodos(){
 	return todos;
 }
 
+//show notifications 
 function showNotifications(notify)
 {
 	let table_body = document.getElementById("ntbody");

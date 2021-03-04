@@ -21,7 +21,7 @@ if(logout_btn){
 
 }
 
-
+//function to show todo action buttons
 function showActionButtons(){
 	
 	let selected_todos  =  document.querySelectorAll(".action-box"); 
@@ -45,6 +45,7 @@ function showActionButtons(){
         }
 }
 
+//function to show clock on page
 function showDateTime(){
 	var clock_time = document.getElementById("current-time");
 	var curr_date = document.getElementById("current-date");
@@ -68,6 +69,7 @@ function showDateTime(){
 
 }
 
+//function to auto update status of todo as per due date and current date
 function updateStatus(){
 	let index;
 	for( i = 0; i < users_data.length; i++)
@@ -99,6 +101,55 @@ function updateStatus(){
 	 localStorage.setItem('users_data',JSON.stringify(users_data));
 }
 
+function showTodoList(todo_array){	
+		if(todo_array.length == 0){
+			var table = document.getElementById("list-table");
+			table.style.display = "none";
+
+			var div = document.getElementById("no-data-div");
+			div.innerHTML  =  "You Don't have any Todo";		
+			div.style.display="block";	
+		return false;
+		}
+
+		let table_body = document.getElementById("table-body");
+		table_body.innerHTML = "";
+		let todo;
+		let new_row = "";
+		for(var i = 0;i < todo_array.length; i++)
+		{
+			todo = todo_array[i];
+			var style;
+			if (todo.status=="Overdue") {
+				style="color:red"
+			}else if (todo.status=="Done") {
+				style="color:Green"
+			}else if (todo.status=="Pending") {
+				style=""
+			}
+			
+			new_row  +=  "<tr style="+style+" id = "+i+">"+
+			"<td>" +todo.title+"</td>"+
+			"<td>"+todo.date+"</td>"+
+			"<td>"+todo.categories+"</td>"+
+			"<td>"+todo.status +"</td>"+
+			"<td>" +todo.reminder+"</td>"+
+			"<td>" +todo.remDate+"</td>"+
+			"<td>" +todo.isPublic+"</td>"+
+			"<td> <input type = 'checkbox' name = " + todo.id + " class = 'action-box' id = td" + i + " value = "+ i +" onchange = showActionButtons();></td>";
+			if(todo.attachment !== ""){
+				new_row  += "<td><a href = 'view.html?id="+todo.id+"' target = _blank >View</a></td>" + "</tr>";
+			}else{
+				new_row  += "<td></td></tr>";	
+			}
+
+		}
+		table_body.innerHTML  += new_row;
+		let tableRows = table_body.getElementsByTagName("tr");
+		lastRow = tableRows[tableRows.length - 1];
+		lastRow.style.borderBottom = "1px solid black";
+
+}
 /*window.onload  = showTodoList();*/
 document.addEventListener('DOMContentLoaded',()=>{
 	showDateTime();
@@ -126,7 +177,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	let todo_array =  getTodos();
 	showTodoList(todo_array);
 
-	// sortTable();
+	// sortTable; 
 	document.getElementById("sort-filter").addEventListener("change",()=>{
 		sortBy = document.getElementById("sort-filter").value;
 		if (sortBy){
@@ -151,7 +202,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 	});
 
-
+	//delete selected Todos
 	document.getElementById("delete-todo").addEventListener("click",()=>{
 		let selected_todos  =  document.querySelectorAll(".action-box"); 
 		let flag = false;
@@ -183,7 +234,16 @@ document.addEventListener('DOMContentLoaded',()=>{
             }    
         showTodoList(todo_array);  
 	});
+	/*function deleteTodo(indices,todo_array){
+		for( var i = 0;i < indices.length; i++)
+		{
+			delete todo_array[i]; 	
+		}
+		return todo_array;
+	}
+*/
 	
+	//edit selected Todo
 	document.getElementById("edit-todo").addEventListener("click",()=>{	
 		let selected_todos  =  document.querySelectorAll(".action-box");   
 		let cnt = 0;
@@ -212,6 +272,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         showTodoList(todo_array);  
 	});
 
+	// Mark as done selected Todos
 	document.getElementById("mrkD-todo").addEventListener("click",()=>{	
 		let selected_todos  =  document.querySelectorAll(".action-box"); 
 		let dindex = [];  
@@ -252,66 +313,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	});
 	
 	
-	function showTodoList(todo_array)
-	{	
-		if(todo_array.length == 0){
-			var table = document.getElementById("list-table");
-			table.style.display = "none";
-
-			var div = document.getElementById("no-data-div");
-			div.innerHTML  =  "You Don't have any Todo";		
-			div.style.display="block";	
-		return false;
-		}
-
-		let table_body = document.getElementById("table-body");
-		table_body.innerHTML = "";
-		let todo;
-		let new_row = "";
-		for(var i = 0;i < todo_array.length; i++)
-		{
-			todo = todo_array[i];
-			var style;
-			if (todo.status=="Overdue") {
-				style="color:red"
-			}else if (todo.status=="Done") {
-				style="color:Green"
-			}else if (todo.status=="Pending") {
-				style=""
-			}
-			
-			new_row  +=  "<tr style="+style+" id = "+i+">"+
-			"<td>" +todo.title+"</td>"+
-			"<td>"+todo.date+"</td>"+
-			"<td>"+todo.categories+"</td>"+
-			"<td>"+todo.status +"</td>"+
-			"<td>" +todo.reminder+"</td>"+
-			"<td>" +todo.remDate+"</td>"+
-			"<td>" +todo.isPublic+"</td>"+
-			"<td> <input type = 'checkbox' name = " + todo.id + " class = 'action-box' id = td" + i + " value = "+ i +" onchange = showActionButtons();></td>";
-			if(todo.attachment !== ""){
-				new_row  += "<td><a href = 'view.html?id = " + todo.id + "' target = _blank >View</a></td>" + "</tr>";
-			}else{
-				new_row  += "<td></td></tr>";	
-			}
-
-		}
-		table_body.innerHTML  += new_row;
-		let tableRows = table_body.getElementsByTagName("tr");
-		lastRow = tableRows[tableRows.length - 1];
-		lastRow.style.borderBottom = "1px solid black";
-
-	}
-	
-
-	function deleteTodo(indices,todo_array){
-		for( var i = 0;i < indices.length; i++)
-		{
-			delete todo_array[i]; 	
-		}
-		return todo_array;
-	}
-
+	//Filter by name........................................................
 	document.getElementById("nsearch").addEventListener("change",()=>{	
 		  document.getElementById("nameSearchClose").style.display = "inline";
 		  document.getElementById("nsearch").style.backgroundColor = "#adf7b1";
@@ -342,6 +344,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 		  }
 	});
 	
+	//Filter by name close........................................................
 	document.getElementById("nameSearchClose").addEventListener("click",()=>{
 		document.getElementById("nameSearchClose").style.display = "none";
 		document.getElementById("nsearch").style.backgroundColor = "";
@@ -351,6 +354,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 		showTodoList(todo_array);
 	});
 
+	//Filter by date........................................................
 	document.getElementById("sdate").addEventListener("change",()=>{
 		document.getElementById("edate").min = document.getElementById("sdate").value;
 		 
@@ -393,6 +397,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 
 	});
+
+	//Filter by date close........................................................
 	document.getElementById("dateFilterClose").addEventListener("click",()=>{
 		document.getElementById("dateFilterClose").style.display = "none";
 		let err = document.getElementById("error");
@@ -405,7 +411,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 		showTodoList(todo_array);
 	});
 
-		
+	//Filter by Categories........................................................	
 	document.getElementById("catFilter").addEventListener("change",()=>{
 		document.getElementById("categoryFilterClose").style.display = "inline";
 		document.getElementById("catFilter").style.backgroundColor = "#adf7b1";
@@ -435,6 +441,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 	});
 
+	//Filter by categories end........................................
 	document.getElementById("categoryFilterClose").addEventListener("click",()=>{
 		document.getElementById("categoryFilterClose").style.display = "none";
 		let err = document.getElementById("error");
@@ -445,6 +452,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 		showTodoList(todo_array);
 	});
 
+	
+	//Filter by status........................................
 	document.getElementById("statusFilter").addEventListener("change",()=>{
 		document.getElementById("statusFilterClose").style.display = "inline";
 		document.getElementById("statusFilter").style.backgroundColor = "#adf7b1";
@@ -474,6 +483,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 	});
 
+	//Filter by status end........................................
 	document.getElementById("statusFilterClose").addEventListener("click",()=>{
 		document.getElementById("statusFilterClose").style.display = "none";
 		let err = document.getElementById("error");
@@ -484,7 +494,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 		showTodoList(todo_array);
 	});
 
-
+	//Sort table by todo title......................................................
 	function sortTableByName(col) {
 
 	  var table, rows, switching, i, x, y, shouldSwitch;
@@ -514,6 +524,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	  }
 	}
 
+	//Sort table by date title......................................................
 	function sortTableByDate(col) {
 		
 	  var table, rows, switching, i, x, y, shouldSwitch;
@@ -542,6 +553,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 	    }
 	  }
 	}
+
+	//sort filter close..........................................
 	document.getElementById("sortFilterClose").addEventListener("click",()=>{
 		document.getElementById("sortFilterClose").style.display = "none";
 		let err = document.getElementById("error");

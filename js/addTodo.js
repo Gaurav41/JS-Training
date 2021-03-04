@@ -19,7 +19,7 @@ if(logout_btn){
 
 }
 
-
+//show date input 
 function showRemDateInputField(){
         let select = document.getElementById("reminder");
         let rmd = document.getElementById("reminder-date");
@@ -33,42 +33,7 @@ function showRemDateInputField(){
 
     }
 
-document.addEventListener('DOMContentLoaded',() =>{
-    let error = document.getElementById("error");
-    let Tdate = new Date;
-    let dd = Tdate.getDate();
-    let mm = (Tdate.getMonth() + 1);
-    let yyyy = Tdate.getFullYear();
-    if(dd < 10){
-        dd = "0" + dd;
-    }
-    if(mm < 10){
-        mm = "0"+ mm;
-    }
-
-    let today =  yyyy+'-'+mm+'-'+dd;
-    document.getElementById("date").min = today;
-    document.getElementById("remD").min = today;
-
-let attachment = "";
-    const file = document.getElementById("attachment");
-        if(file){
-            file.addEventListener("change",function(){
-                const reader = new FileReader();//
-                reader. readAsDataURL(this.files[0]);//Starts reading the contents of the specified Blob, once finished, 
-                                                    //the result attribute contains a data: URL representing the file's data.
-                reader.addEventListener('load',() =>{
-                    attachment = reader.result;
-                    
-                });
-                reader.addEventListener('error',() =>{
-                    alert("Opps attachment uploading failed!!!");
-                    
-                });
-            });
-
-        };
-
+//generate new Id for new Todo    
 function generateId(){
         let users_data = JSON.parse(localStorage.getItem('users_data'));
         
@@ -92,20 +57,25 @@ function generateId(){
     
 }
 
+//constructure to create new todo 
 function Todo(title,date,categories,status,reminder,reminderDate,isPublic,attachment){
 
-    this.id = generateId() + 1;
+    this.id = generateId();
     this.title = title
-	this.date = date;
-	this.categories = categories;
-	this.status = status;
-	this.reminder = reminder;
+    this.date = date;
+    this.categories = categories;
+    this.status = status;
+    this.reminder = reminder;
     this.remDate = reminderDate;
-	this.isPublic = isPublic;
+    this.isPublic = isPublic;
     this.attachment = attachment;
+
 }
 
 
+//Add todo form validation...............................................
+
+//validate title
 function validateTitle(){
     let title = document.getElementById("title");
     let regex = /^([a-zA-Z\_\-\.]+)([a-zA-Z0-9\s\_\-\.]+)$/;
@@ -165,18 +135,6 @@ function validateCategories(){
 
 
 }
-/*
-function validateStatus(){
-    if(document.getElementById("mrkD").checked||document.getElementById("mrkO").checked||document.getElementById("mrkN").checked){
-        error.style.display = "none";
-        return true;
-
-    }else{
-        error.innerHTML = "Please select status";
-        error.style.display = "block";
-        return false;
-    }
-}*/
 
 function validateRmDate(){
     var rmdate = document.getElementById("remD");  
@@ -193,6 +151,7 @@ function validateRmDate(){
      }
 
 } 
+
 function validateIsPublic(){
     let isPublic;
    if(document.getElementById("isPublic").checked){
@@ -214,112 +173,150 @@ function validateIsPublic(){
 
 } 
 
-document.getElementById("add").addEventListener("click",addTodo);
+document.addEventListener('DOMContentLoaded',() =>{
+    let error = document.getElementById("error");
+    let Tdate = new Date;
+    let dd = Tdate.getDate();
+    let mm = (Tdate.getMonth() + 1);
+    let yyyy = Tdate.getFullYear();
+    if(dd < 10){
+        dd = "0" + dd;
+    }
+    if(mm < 10){
+        mm = "0"+ mm;
+    }
 
-function addTodo(){
+    let today =  yyyy+'-'+mm+'-'+dd;
+    document.getElementById("date").min = today;
+    document.getElementById("remD").min = today;
 
-	let error = document.getElementById("error");
-    let select = document.getElementById("reminder");
-    let reminderStatus = select.options[select.selectedIndex].value;
-    let remdate = document.getElementById("remD");  
+    let attachment = "";
+    const file = document.getElementById("attachment");
+        if(file){
+            file.addEventListener("change",function(){
+                const reader = new FileReader();//
+                reader. readAsDataURL(this.files[0]);//Starts reading the contents of the specified Blob, once finished, 
+                                                    //the result attribute contains a data: URL representing the file's data.
+                reader.addEventListener('load',() =>{
+                    attachment = reader.result;
+                    
+                });
+                reader.addEventListener('error',() =>{
+                    alert("Opps attachment uploading failed!!!");
+                    
+                });
+            });
 
-    if(reminderStatus == "Yes")
-    {   
-        if (validateRmDate()) {
-            remdate = remdate.value;
+        };
+
+
+
+    document.getElementById("add").addEventListener("click",addTodo);
+    // Add new todo to DB
+    function addTodo(){
+
+    	let error = document.getElementById("error");
+        let select = document.getElementById("reminder");
+        let reminderStatus = select.options[select.selectedIndex].value;
+        let remdate = document.getElementById("remD");  
+
+        if(reminderStatus == "Yes")
+        {   
+            if (validateRmDate()) {
+                remdate = remdate.value;
+            }else{
+                return false;
+            }
+            
         }else{
+            remdate = "NA";
+        }
+        
+        /*var status = "";
+        if(document.getElementById("mrkD").checked){
+            status = document.getElementById("mrkD").value;
+            error.style.display = "none";
+        }else if(document.getElementById("mrkO").checked){
+            status = document.getElementById("mrkO").value;
+            error.style.display = "none";
+        }else if(document.getElementById("mrkN").checked){
+            status = document.getElementById("mrkN").value;
+            error.style.display = "none";
+        }*/
+
+        var status = "Pending";
+
+    	let users_data = JSON.parse(localStorage.getItem('users_data'));
+    	var index = -1;
+    		for(let i = 0;i < users_data.length;i++)
+    		{		
+    			if(users_data[i].uname ===  LoggedInUser)
+    			{
+    			index = i;
+    			break;
+    			}
+    		}
+    		
+        if(validateTitle()&&validateDate() && validateCategories() && validateIsPublic())
+        {
+            let categories = [];
+            let categories_ip = document.querySelectorAll(".cat");   
+            for (let i = 0; i < categories_ip.length; i++) {   
+                if(categories_ip[i].checked  ==  true)
+                {
+                    categories.push(categories_ip[i].value);
+                               
+                }
+            }
+            
+            if(document.getElementById("isPublic").checked){
+                isPublic = document.getElementById("isPublic").value;
+            }
+            else {
+                    isPublic = document.getElementById("isNotPublic").value;
+                  }
+            let new_todo = new Todo(title.value,date.value,categories,status,reminderStatus,remdate,isPublic,attachment);
+
+
+            if(users_data[index].todos.push(new_todo)){
+                try{
+                    localStorage.setItem("users_data",JSON.stringify(users_data));
+                    if(confirm("New Todo added successfully Do you want to add more?"))
+                    {
+                         let formElements = document.querySelector('form').elements;  
+                         for(let i = 0; i < formElements.length; i++)
+                         {
+                           if(formElements[i].type  ==  "text" || formElements[i].type  ==  "date" ){
+                             formElements[i].value = "";
+                           }
+                            if(formElements[i].checked){
+                                formElements[i].checked = false;
+                            }
+                            if(formElements[i].type  ==  "select-one"){
+                                formElements[i].selectedIndex = 0;
+                            }
+                             if(formElements[i].type  ==  "file"){
+                                formElements[i].value = "";
+                            }
+
+                         }
+                        let rmd = document.getElementById("reminder-date");
+                        rmd.style.display = "none";
+              
+                    }else{
+                        window.location.href = "./todoList.html";   
+                    }
+                }catch(error){
+                     alert("Something went wrong \n Error:"+ error);
+                }
+            }
+        }else{
+            //alert("Some thing went wrong");
             return false;
         }
-        
-    }else{
-        remdate = "NA";
+    		       
+    		
     }
-    
-    /*var status = "";
-    if(document.getElementById("mrkD").checked){
-        status = document.getElementById("mrkD").value;
-        error.style.display = "none";
-    }else if(document.getElementById("mrkO").checked){
-        status = document.getElementById("mrkO").value;
-        error.style.display = "none";
-    }else if(document.getElementById("mrkN").checked){
-        status = document.getElementById("mrkN").value;
-        error.style.display = "none";
-    }*/
-
-    var status = "Pending";
-
-	let users_data = JSON.parse(localStorage.getItem('users_data'));
-	var index = -1;
-		for(let i = 0;i < users_data.length;i++)
-		{		
-			if(users_data[i].uname ===  LoggedInUser)
-			{
-			index = i;
-			break;
-			}
-		}
-		
-    if(validateTitle()&&validateDate() && validateCategories() && validateIsPublic())
-    {
-        let categories = [];
-        let categories_ip = document.querySelectorAll(".cat");   
-        for (let i = 0; i < categories_ip.length; i++) {   
-            if(categories_ip[i].checked  ==  true)
-            {
-                categories.push(categories_ip[i].value);
-                           
-            }
-        }
-        
-        if(document.getElementById("isPublic").checked){
-            isPublic = document.getElementById("isPublic").value;
-        }
-        else {
-                isPublic = document.getElementById("isNotPublic").value;
-              }
-        let new_todo = new Todo(title.value,date.value,categories,status,reminderStatus,remdate,isPublic,attachment);
-
-
-        if(users_data[index].todos.push(new_todo)){
-            try{
-                localStorage.setItem("users_data",JSON.stringify(users_data));
-                if(confirm("New Todo added successfully Do you want to add more?"))
-                {
-                     let formElements = document.querySelector('form').elements;  
-                     for(let i = 0; i < formElements.length; i++)
-                     {
-                       if(formElements[i].type  ==  "text" || formElements[i].type  ==  "date" ){
-                         formElements[i].value = "";
-                       }
-                        if(formElements[i].checked){
-                            formElements[i].checked = false;
-                        }
-                        if(formElements[i].type  ==  "select-one"){
-                            formElements[i].selectedIndex = 0;
-                        }
-                         if(formElements[i].type  ==  "file"){
-                            formElements[i].value = "";
-                        }
-
-                     }
-                    let rmd = document.getElementById("reminder-date");
-                    rmd.style.display = "none";
-          
-                }else{
-                    window.location.href = "./todoList.html";   
-                }
-            }catch(error){
-                 alert("Something went wrong \n Error:"+ error);
-            }
-        }
-    }else{
-        //alert("Some thing went wrong");
-        return false;
-    }
-		       
-		
-}
 
 });
 

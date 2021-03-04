@@ -1,20 +1,28 @@
-document.addEventListener("DOMContentLoaded",()=>{
-		const img_input = document.getElementById("uimg");
-		if(img_input){
-			img_input.addEventListener("change",function(){
-				const reader = new FileReader();
-				reader.	readAsDataURL(this.files[0]);
-				reader.addEventListener('load',()=>{
-					user_img = reader.result;			
-				});
-			});
-		}
-		var login_btn = document.getElementById("login-btn");
-		if(login_btn){
-			login_btn.addEventListener("click", getLoginCredentialsFromUser);
-		}
-});
+//This JS file provides functioanality to index(Login) page
 
+//User Authentication function 
+function isAuthenticateUser(uname,pass)
+{	
+	if(localStorage.getItem('users_data')){
+		let u = JSON.parse(localStorage.getItem('users_data'));
+
+		for(let i = 0;i < u.length; i++)
+		{
+			if(u[i].uname === uname && u[i].password === pass)
+			{
+				return true;
+			}
+		}
+		alert("Invalid credentials");
+		return false;
+	}else{
+		alert(" OOPS... NO DATABASE EXIST !!! ( Register first )");
+		return false;
+	}
+}
+
+
+//get Data from user through UI
 function getLoginCredentialsFromUser(){
     var uname = document.getElementById("username").value;
     var upass = document.getElementById("password").value;
@@ -41,25 +49,17 @@ function getLoginCredentialsFromUser(){
 		}	
 	}
 }
-	
-function isAuthenticateUser(uname,pass)
-{	
-	if(localStorage.getItem('users_data')){
-		let u = JSON.parse(localStorage.getItem('users_data'));
 
-		for(let i = 0;i < u.length; i++)
-		{
-			if(u[i].uname === uname && u[i].password === pass)
-			{
-				return true;
-			}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+		var login_btn = document.getElementById("login-btn");
+		if(login_btn){
+			login_btn.addEventListener("click", getLoginCredentialsFromUser);
 		}
-		alert("Invalid credentials");
-		return false;
-	}else{
-		alert(" OOPS... NO DATABASE EXIST !!! ( Register first )");
-		return false;
-	}
-}
+});
+
+
+	
 
 

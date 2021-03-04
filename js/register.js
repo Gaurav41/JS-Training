@@ -1,6 +1,9 @@
+//check for database
+//if no database then create new user_data in local strage
 if(!(localStorage.getItem('users_data')))
 		localStorage.setItem('users_data',JSON.stringify([]));
 
+//constructure for creating new user object
 function User(uname,fname,lname,gender,password,address){
 	this.uname  =  uname;
 	this.fname  =  fname;
@@ -11,6 +14,7 @@ function User(uname,fname,lname,gender,password,address){
 	this.todos  =  [];
 }
 
+//check for availability of user name for new user.
 function isUsernameAvailable(newUsername){
 	let users_data  =  localStorage.getItem('users_data');
 	if(users_data){
@@ -40,7 +44,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 	let password  =  document.getElementById("password");
 	let retype_password  =  document.getElementById("retype-password");
 	
-	//email
+	//email validation........................................................
 	uname.addEventListener('change',validateUsername);
 	function validateUsername(){
 		var username = uname.value;
@@ -77,6 +81,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 		}
     }
 
+    //first Name validation..................................................
 	fname.addEventListener('change',validateFirstName);
 	function validateFirstName(){
 		var err = document.getElementById('ferr');
@@ -106,6 +111,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 
 	}
 
+    //Last Name validation..................................................
 	lname.addEventListener('change',validateLastName);
 	function validateLastName(){
 		var err = document.getElementById('lerr');
@@ -160,6 +166,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 		}
 	});*/
 
+    //Password Name validation..................................................
 	password.addEventListener('change',validatePassword)
 	function validatePassword(){
 		var err = document.getElementById('perr');
@@ -203,6 +210,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 
 	}
 
+    //Retyped Password validation..................................................
 	retype_password.addEventListener('change',validateRetypedPassword);
 	function validateRetypedPassword(){
 		var err = document.getElementById('cperr');
@@ -231,6 +239,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 		}
 	}
 
+ 	//get and store user profile image and store in DB as DataURL.............................
 	let user_img;
 	const img_input = document.getElementById("uimg");
 		if(img_input){
@@ -246,6 +255,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 			user_img = null;
 		}
 
+	//submit registration form
 	let submit = document.getElementById("register-btn");
 	submit.addEventListener('click',(e) =>{
 		e.preventDefault();
@@ -282,6 +292,8 @@ document.addEventListener("DOMContentLoaded",() =>{
 			return false;
 		}
 
+
+		//Create new user Object..................................................
 		let new_user = new User(uname.value,fname.value,lname.value,gender,password.value,address.value);
 		try{
 			let u  =  JSON.parse(localStorage.getItem('users_data'));
@@ -298,7 +310,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 				}		
 	});
 
-
+	//Reset Form (remove error and border set during form validation)..................................................
 	let reset = document.getElementById("cancle-btn");
 	reset.addEventListener('click',(e) =>{
 		

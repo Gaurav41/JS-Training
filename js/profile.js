@@ -30,6 +30,7 @@ for(let i = 0;i < allUsersData.length; i++)
 let u = allUsersData[index];
 
 window.onload = loadData();
+//show user profile data on profile page
 function loadData(){
 	document.getElementById("f-name").value = u.fname;
 	document.getElementById("l-name").value = u.lname;
@@ -67,6 +68,9 @@ let	err = document.getElementById("error");
 err.innerHTML = "";
 err.style.display = "none";
 
+//profile update form validation.........................................
+
+//first name validation 
 let fname = document.getElementById("f-name");
 fname.addEventListener('change',()=>{
 	if(fname.value == "")
@@ -90,6 +94,7 @@ fname.addEventListener('change',()=>{
 	}
 });
 
+//last name validation 
 let lname = document.getElementById("l-name");
 lname.addEventListener("change",()=>{
 	if(lname.value == "")
@@ -112,8 +117,9 @@ lname.addEventListener("change",()=>{
 		}
 	}
 });
+//form validation end..................................................
 
-
+//save updated profile................................................ 
 var save = document.getElementById("save-btn");
 save.addEventListener("click",()=>{
 	fname = document.getElementById("f-name");
@@ -155,7 +161,7 @@ save.addEventListener("click",()=>{
 	/*document.getElementById("edit-info-btn").style.display = "block";*/
 	document.getElementById("update-info-btn").style.display = "none";	
 });
-
+//save updated profile end................................................
 
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -195,8 +201,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 	}	
 });
 
+//change profile pic of user...............................................
 let cp = document.getElementById("change-profile");
-
 cp.addEventListener("click",()=>{
 
 	let cps = document.getElementById("upload-img-container");
@@ -229,5 +235,6 @@ cp.addEventListener("click",()=>{
 	}
 
 });
+//change profile pic of user end...............................................
 
 

@@ -41,6 +41,7 @@ function getData(){
         todos  =  users_data[index].todos;
 }
 
+//Show Date input 
 function showRemDateInputField(){
         let select  =  document.getElementById("reminder");
         let rmd  =  document.getElementById("reminder-date");
@@ -169,7 +170,8 @@ document.addEventListener("DOMContentLoaded",() =>{
     }
 });
 
-    
+
+//constructure to add new todo as updated todo on same location in database    
 function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
     this.id = id;
     this.title = title
@@ -181,6 +183,7 @@ function Todo(id,title,date,categories,status,reminder,reminderDate,isPublic){
 	this.isPublic = isPublic;
 }
 
+//todo edit form validation.........................................................
 function validateTitle(){
     let title = document.getElementById("title");
     let regex = /^([a-zA-Z\_\-\.]+)([a-zA-Z0-9\s\_\-\.]+)$/;
@@ -276,9 +279,10 @@ function validateIsPublic(){
 
 
 } 
-
+//todo edit form validation end.....................................................
 document.getElementById("save").addEventListener("click",updateTodo);
 
+//update todo
 function updateTodo(){
     let error = document.getElementById("error");    
     let select = document.getElementById("reminder");
@@ -377,7 +381,7 @@ function updateTodo(){
         return false;
     }
 }
-
+//update tod end
 
 
 document.getElementById("cancle").addEventListener("click",() =>{
